@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,8 @@ import { MainComponent } from './main/main.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { CineComponent } from './cine/cine.component';
 import { PeliculaComponent } from './pelicula/pelicula.component';
+import { FormularioComponent } from './formulario/formulario.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +21,15 @@ import { PeliculaComponent } from './pelicula/pelicula.component';
     MainComponent,
     UsuarioComponent,
     CineComponent,
-    PeliculaComponent
+    PeliculaComponent,
+    FormularioComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
