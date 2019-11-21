@@ -6,6 +6,7 @@ import { PeliculaComponent } from './pelicula/pelicula.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { LoginComponent } from './login/login.component';
 import { CineComponent } from './cine/cine.component';
+import { BusquedasComponent } from './busquedas/busquedas.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'pelicula/:idPelicula', component: PeliculaComponent },
   { path: 'cine/:idCine', component: CineComponent },
   { path: 'formulario', component: FormularioComponent },
+  { path: 'resultados', component: BusquedasComponent },
   { path: '**', redirectTo: '/main' },
 ];
 

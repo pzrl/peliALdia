@@ -1,6 +1,9 @@
-input.ng-valid.ng-touched {
-    border: 1px solid forestgreen;
-}
+
 input.ng-invalid.ng-touched {
     border: 1px solid firebrick;
+}
+
+.social {
+    background-color: #f1c40f;
+    height: 100vh;
 }

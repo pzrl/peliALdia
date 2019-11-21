@@ -1,5 +1,6 @@
 export class Cine {
 
+    id: number;
     nombre: string;
     marca: string;
     direccion: string;
@@ -14,6 +15,7 @@ export class Cine {
         pTelefono: string,
         pPeliculas: [],
     ) {
+        this.id = null;
         this.nombre = pNombre;
         this.marca = pMarca;
         this.direccion = pDireccion;

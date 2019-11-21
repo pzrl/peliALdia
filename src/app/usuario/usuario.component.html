@@ -1,5 +1,44 @@
 <div class="principal col-8 float-left p-4">
 
+    <div class="card mb-3 float-left" style="width: 100%;  height: auto" *ngFor="let usuario of arrUsuarios">
+
+
+        <div class="row no-gutters p-3">
+            <div class="col-md-4">
+                <img src="../../assets/provisional-images/{{usuario.avatar}}" class="img-fluid rounded-circle"
+                    width="150px">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h4 class="card-title">{{usuario.usuario}}</h4>
+                    <p class="font-italic">{{usuario.cita}}</p>
+
+                    <div class="clearfix">
+                        <div class="float-left mr-5">
+                            <h2 class="display-inline">250*</h2>
+                            <p class="display-inline">pelis vistas</p>
+                        </div>
+                        <div class="float-left mr-5">
+                            <h2>70*</h2>
+                            <p>pelis pendientes</p>
+                        </div>
+                    </div>
+
+                    <div id="nota">
+                        <p>Valoraciones</p>
+                        <div class="mala"> </div>
+                        <div class="pasable"> </div>
+                        <div class="entretenida"> </div>
+                        <div class="interesante"> </div>
+                        <div class="muyBuena"> </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
 </div>

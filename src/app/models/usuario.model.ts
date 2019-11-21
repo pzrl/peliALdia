@@ -1,11 +1,10 @@
 export class Usuario {
-
+    id: number;
     nombre: string;
     apellidos: string;
-    fechaNacimiento: Date;
+    fechaNacimiento: string;
     mail: string;
     password: string;
-    rpassword: string;
     avatar: string;
     usuario: string;
     cita: string;
@@ -13,20 +12,19 @@ export class Usuario {
     constructor(
         pNombre: string,
         pApellidos: string,
-        pFechaNacimiento: Date,
+        pFechaNacimiento: string,
         pMail: string,
         pPassword: string,
-        pRPassword: string,
         pAvatar: string,
         pUsuario: string,
         pCita: string
     ) {
+        this.nombre = null;
         this.nombre = pNombre;
         this.apellidos = pApellidos;
         this.fechaNacimiento = pFechaNacimiento;
         this.mail = pMail;
         this.password = pPassword;
-        this.rpassword = pRPassword;
         this.avatar = pAvatar;
         this.usuario = pUsuario;
         this.cita = pCita;
