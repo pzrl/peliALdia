@@ -1,0 +1,12 @@
+ul {
+    list-style: none;
+}
+.foto, a {
+    display: inline-block;
+}
+img {
+    width: 25px;
+}
+a {
+    font-size: 60%;
+}

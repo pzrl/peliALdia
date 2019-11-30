@@ -1,0 +1,15 @@
+* {
+    color: rgb(212, 245, 244);
+    background-color: rgb(0, 80, 76);
+}
+h2 {
+    color: white;
+}
+a {
+    color: rgb(212, 245, 244);
+    
+}
+a:hover {
+    color: white;
+    text-decoration: none;
+}

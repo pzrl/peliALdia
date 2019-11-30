@@ -1,6 +1,6 @@
-<div class="principal col-8 float-left p-4">
+<div class="principal p-4">
 
-    <div class="card mb-3 float-left" style="width: 100%;  height: auto" *ngFor="let usuario of arrUsuarios">
+    <div class="card mb-3 " style="width: 100%;  height: auto">
 
 
         <div class="row no-gutters p-3">
@@ -10,8 +10,8 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h4 class="card-title">{{usuario.usuario}}</h4>
-                    <p class="font-italic">{{usuario.cita}}</p>
+                    <h2 class="card-title">{{ usuario.usuario }}</h2>
+                    <p class="font-italic">{{ usuario.cita }}</p>
 
                     <div class="clearfix">
                         <div class="float-left mr-5">
@@ -22,36 +22,30 @@
                             <h2>70*</h2>
                             <p>pelis pendientes</p>
                         </div>
+                        <div class="float-left mr-5">
+                            <h2>5.5</h2>
+                            <p>valoración media</p>
+                        </div>
                     </div>
 
-                    <div id="nota">
-                        <p>Valoraciones</p>
-                        <div class="mala"> </div>
-                        <div class="pasable"> </div>
-                        <div class="entretenida"> </div>
-                        <div class="interesante"> </div>
-                        <div class="muyBuena"> </div>
-                    </div>
+
 
                 </div>
             </div>
         </div>
     </div>
 
-
-
-
-</div>
-
-<div class="social col-4 p-5 float-left">
-    <div class="container p-0">
-        <div class="conversaciones mb-4">
+    <div class="container pt-5">
+        <p>Aqui debajo van las conversaciones</p>
+        <div class="conversaciones my-5 p-4" *ngFor="let post of arrPosts">
+            <p>{{post}}</p>
 
         </div>
-
-        <textarea id="" class="col-12" rows="4">
-
-        </textarea>
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit(formulario.post)">
+            <textarea class="col-12" rows="4" formControlName="post"></textarea>
+            <input type="submit" class="btn btn-outline-light" value="Enviar">
+        </form>
     </div>
+
 
 </div>

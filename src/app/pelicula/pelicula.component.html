@@ -1,43 +1,94 @@
-<div class="princial col-8 float-left p-4">
+<div class="princial p-4">
 
     <!-- FICHA PELICULA --------------------------------------------- -->
 
-    <div class="card mb-3 pt-3" style="max-width: 100%;">
+    <div class="pelicula mb-3 pt-3" style="max-width: 100%;">
         <div class="row no-gutters pl-3">
             <div class="col-md-4">
-                <img src="https://pics.filmaffinity.com/the_irishman-973471009-mmed.jpg" class="img-fluid"
-                    width="200px">
+                <img [src]="pelicula.imagen" class="foto img-fluid" width="200px">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h2 class="card-title">El irlandés</h2>
-                    <p class="card-text">Año: 2019</p>
-                    <p class="card-text">Duración: 210 minutos</p>
-                    <p class="card-text">Director: Martin Scorsese</p>
-                    <p class="card-text">Reparto: Robert De Niro, Al Pacino, Joe Pesci, Harvey Keitel</p>
-                    <p class="card-text">Frank Sheeran fue un veterano de la Segunda Guerra Mundial, estafador y sicario
-                        que trabajó con algunas delas figuras más destacadas del s. XX. El irlandés la crónica de uno de
-                        los grandes misterios sinresolver del país: ladesaparición del legendario sindicalista Jimmy
-                        Hoffa, un gran viaje por los turbios entresijosdel crimen organizado:sus mecanismos internos,
-                        rivalidades y su conexión con la política. Adaptación del libro "IHeard You Paint Houses",
-                        deCharles Brandt, a cargo del guionista Steven Zaillian (La lista de Schindler,
-                        AmericanGangster).
+                    <h2 class="card-title"> {{ pelicula.titulo }} </h2>
+                    <p class="card-text">Año: {{ pelicula.anio }}</p>
+                    <p class="card-text">Duración: {{ pelicula.duracion }}</p>
+                    <p class="card-text">Director: {{ pelicula.director }}</p>
+                    <p class="card-text">Reparto: {{ pelicula.reparto }}</p>
+                    <p class="card-text">Sinopsis: {{ pelicula.sinopsis }}
                     </p>
+
+                    <div class="puntuar">
+                        <select name="" id="" (change)="onChange($event.target.value)">
+                            <option value="null" active></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <h1></h1>
+                        <p>valoración</p>
+                    </div>
+                    <div class="pendientes">
+                        <p>
+                            <button (click)="onClick($event.target.value)" value="1">Añadir a pelis
+                                pendientes</button>
+                            <button (click)="onClick($event.target.value)" value="0">Quitar de pelis pendientes</button>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="social col-4 p-5 float-left">
-    <div class="container p-0">
-        <div class="reseñas mb-4">
+    <div class="container pt-5">
+        <h5>Reseñas</h5>
+
+        <div class="reseñas my-5 p-4">
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
+                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
+                similique dolore! </p>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
+                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
+                similique dolore! </p>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
+                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
+                similique dolore! </p>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
+                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
+                similique dolore! </p>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
+                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
+                similique dolore! </p>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
+                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
+                similique dolore! </p>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
+                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
+                similique dolore! </p>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
+                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
+                similique dolore! </p>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
+                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
+                similique dolore! </p>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
+                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
+                similique dolore! </p>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
+                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
+                similique dolore! </p>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
+                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
+                similique dolore! </p>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
+                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
+                similique dolore! </p>
 
         </div>
-
-        <textarea id="" class="col-12" rows="4">
-
-        </textarea>
+        <form>
+            <textarea class="col-12" rows="4"></textarea>
+            <input type="submit" class="btn btn-outline-light" value="Enviar">
+        </form>
     </div>
-
 </div>

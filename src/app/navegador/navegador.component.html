@@ -1,19 +1,18 @@
-<nav class="navbar navbar-expand-lg">
-    <div class="col-3">
-        <a class="navbar-brand text-warning" href="#">peli<span>AL</span>dia</a>
+<nav class="navbar navbar-expand-lg pl-0">
+    <div class="col-2 px-0">
+        <a class="navbar-brand" href="#">peli<span>AL</span>dia</a>
     </div>
-    <div class="collapse navbar-collapse col-9">
-        <form class="form-inline input-group">
-            <select class="custom-select col-2" name="" id="">
-                <option value="pelicula" selected>Peli</option>
-                <option value="cine">Cine</option>
-                <option value="usuario">Amigos</option>
-            </select>
-            <input class="form-control col-5" type="search" placeholder="Buscar..." aria-label="Search">
+    <ul class="nav d-inline-block col-8">
+        <li class="nav-item d-inline-block"><a class="nav-link" href="#">amigos</a></li>
+        <li class="nav-item d-inline-block"><a class="nav-link" href="#">pelis</a></li>
+        <li class="nav-item d-inline-block"><a class="nav-link" href="#">cines</a></li>
+    </ul>
+    <div class="collapse navbar-collapse col-2">
+        <form class="buscador form-inline input-group" #formulario="ngForm">
+            <input class="form-control col-9" type="search" name="item" ngModel>
             <div class="input-group-append">
-                <button class="btn btn-outline-warning" type=" submit">Buscar</button>
+                <button class="btn" type="submit" [routerLink]="['/busqueda/', formulario.value.item]">P</button>
             </div>
-
         </form>
     </div>
 </nav>

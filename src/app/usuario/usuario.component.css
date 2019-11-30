@@ -1,42 +1,21 @@
 .principal {
     background-color: #ecf0f1;
-    height: 100vh;
+}
+.principal {
+    background-color: rgba(0, 80, 76, 0.5);
 }
 .img-fluid {
     max-width: 70%; 
     max-height: auto; 
     margin-bottom: 20px;
 }
-#nota {
-    width: 80%;
-    height: 30px;
-}
-#nota div {
-    height: 30px;
-    width: 20%;
-    display: inline-block;
-}
-.mala {
-    background-color: darkred;
-}
-.pasable {
-    background-color: darkorange;
-}
-.entretenida {
-    background-color: violet;
-}
-.interesante {
-    background-color: teal;
-}
-.muyBuena {
-    background-color: lime;
-}
 
-.social {
-    background-color: #f1c40f;
-    height: 100vh;
-}
 .conversaciones {
-    height: 60vh;
-    background-color: #ecf0f1;
+    height: auto;
+    border: 1px solid rgb(212, 245, 244);
+    border-radius: 3px;
+}
+textarea {
+    background-color:  rgb(212, 245, 244);
+    color:rgb(0, 80, 76);
 }

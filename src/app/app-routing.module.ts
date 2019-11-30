@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'pelicula/:idPelicula', component: PeliculaComponent },
   { path: 'cine/:idCine', component: CineComponent },
   { path: 'formulario', component: FormularioComponent },
-  { path: 'resultados', component: BusquedasComponent },
+  { path: 'busqueda/:consulta', component: BusquedasComponent },
   { path: '**', redirectTo: '/main' },
 ];
 

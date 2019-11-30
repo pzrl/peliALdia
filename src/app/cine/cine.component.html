@@ -1,4 +1,4 @@
-<div class="principal col-8 float-left p-4">
+<div class="principal p-4">
 
     <!-- FICHA CINE --------------------------------------------- -->
 
@@ -9,11 +9,11 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h2 class="card-title">Cines Renoir Princesa</h2>
-                    <p class="card-text">Renoir</p>
-                    <p class="card-text">Calle de la Princesa, 3</p>
-                    <p class="card-text">Madird</p>
-                    <a href="" class="card-text"><small class="text-muted">915421172</small></a>
+                    <h2 class="card-title"> {{ cine.nombre }} </h2>
+                    <p class="card-text">{{ cine.empresa }}</p>
+                    <p class="card-text">{{ cine.direccion }}</p>
+                    <p class="card-text">Madird (no din) </p>
+                    <a href="" class="card-text"><small class="text-muted">{{ cine.telefono }}</small></a>
                 </div>
             </div>
         </div>
@@ -24,8 +24,8 @@
     <div class="card mb-3 mr-3 float-left   " style="width: 48%; height: 180px">
         <div class="row no-gutters p-3">
             <div class="col-md-4">
-                <img src="https://pics.filmaffinity.com/the_irishman-973471009-mmed.jpg" class="img-fluid"
-                    width="100px">
+                <img src="https://m.media-amazon.com/images/M/MV5BMGUyM2ZiZmUtMWY0OC00NTQ4LThkOGUtNjY2NjkzMDJiMWMwXkEyXkFqcGdeQXVyMzY0MTE3NzU@._V1_UY268_CR0,0,182,268_AL_.jpg"
+                    class="img-fluid" width="100px">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -38,7 +38,6 @@
                         <div class="sesion"><a href="">22:00</a></div>
                     </div>
 
-
                 </div>
             </div>
         </div>
@@ -47,7 +46,8 @@
     <div class="card mb-3 float-left" style="width: 48%;  height: 180px">
         <div class="row no-gutters p-3">
             <div class="col-md-4">
-                <img src="https://pics.filmaffinity.com/madre-610240775-mmed.jpg" class="img-fluid" width="100px">
+                <img src="http://es.web.img3.acsta.net/c_215_290/pictures/19/08/22/20/01/2916985.jpg" class="img-fluid"
+                    width="100px">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -66,9 +66,7 @@
         </div>
     </div>
 
-</div>
 
-<div class="social col-4 p-5 float-left">
     <div class="container p-0">
         <div class="reseñas mb-4">
 
@@ -76,7 +74,8 @@
 
         <textarea id="" class="col-12" rows="4">
 
-        </textarea>
+            </textarea>
     </div>
+
 
 </div>

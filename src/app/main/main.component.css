@@ -1,9 +1,23 @@
 .principal {
-    background-color: #ecf0f1;
-    height: 100vh;
-
+    background-color: rgb(0, 80, 76);
+    height: 100%;
 }
-.social {
-    background-color: #f1c40f;
-    height: 100vh;
+
+.bloquePeliculas {
+    display: flex; 
+    height: 100%;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.peli button {
+    font-weight: bold;
+    border-radius: 10%;
+    border: none;
+    background-color: rgb(197, 25, 25);
+    margin: 0 5px;
+    color: rgb(212, 245, 244);
+    position: relative;
+    top: -198px;
+    left: 108px;
 }

@@ -1,13 +1,26 @@
-.princial {
-    background-color: #ecf0f1;
-    height: 100vh;
 
+.pelicula {
+    border: 1px solid rgb(212, 245, 244);
+    border-radius: 5px;
 }
-.social {
-    background-color: #f1c40f;
-    height: 100vh;
+.foto {
+    border-radius: 5px;
+}
+button {
+    border: none
+}
+button:hover {
+    color: white;
+}
+button:focus {
+    outline: none;
 }
 .reseñas {
-    height: 60vh;
-    background-color: #ecf0f1;
+    height: auto;
+    border: 1px solid rgb(212, 245, 244);
+    border-radius: 3px;
+}
+textarea {
+    background-color:  rgb(212, 245, 244);
+    color:rgb(0, 80, 76);
 }

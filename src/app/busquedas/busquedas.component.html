@@ -1,1 +1,70 @@
-<p>busquedas works!</p>
+<div class="todo p-4">
+    <h3>Resultados:</h3>
+
+    <!-- PELICULA -->
+    <h5>Peliculas</h5>
+    <div class="card my-3" style="max-width: 100%;" *ngFor="let pelicula of arrBusqueda[0]">
+        <div class="row no-gutters p-3" max-height="200px">
+
+            <div class="col-2">
+                <a [routerLink]="['/pelicula/', pelicula.id]">
+                    <img src="{{ pelicula.imagen }}" class="img-fluid" width="100px">
+                </a>
+            </div>
+
+            <div class="col-10">
+                <div class="card-body">
+                    <h5 class="card-title"><a [routerLink]="['/pelicula/', pelicula.id]"> {{ pelicula.titulo }} </a>
+                    </h5>
+                    <p class="card-text">Año: {{ pelicula.anio }}</p>
+                    <p class="card-text">Director: {{ pelicula.director }}</p>
+                    <p class="card-text">Reparto: {{ pelicula.reparto }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- USUARIO -->
+    <h5>Usuarios</h5>
+    <div class="card my-3" style="max-width: 100%;" *ngFor="let usuario of arrBusqueda[1]">
+        <div class="row no-gutters p-3" max-height="200px">
+
+            <div class="col-2">
+                <a [routerLink]="['/usuario/', usuario.id]">
+                    <img [src]="'../../assets/provisional-images/' + usuario.avatar" class="img-fluid" width="100px">
+                </a>
+            </div>
+
+            <div class="col-10">
+                <div class="card-body">
+                    <h5 class="card-title"><a [routerLink]="['/usuario/', usuario.id]">{{ usuario.usuario }}</a></h5>
+                    <p class="card-text">{{ usuario.cita }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- CINE -->
+    <h5>Cines</h5>
+    <div class="card my-3" style="max-width: 100%;" *ngFor="let cine of arrBusqueda[2]">
+        <div class="row no-gutters p-3" max-height="200px">
+
+            <div class="col-2">
+                <a [routerLink]="['/cine/', cine.id ]">
+                    <img src="../../assets/provisional-images/Imagen1.svg" class="img-fluid" width="100px">
+                </a>
+            </div>
+
+            <div class="col-10">
+                <div class="card-body">
+                    <h5 class="card-title"><a [routerLink]="['/cine/', cine.id ]">{{ cine.nombre }}</a></h5>
+                    <p class="card-text">{{ cine.direccion }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

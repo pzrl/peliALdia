@@ -1,3 +1,31 @@
-.col-9 {
-    height: 100vh;
+.navegador {
+    height: 60px;
+    background-color: rgb(0, 80, 76);
+    position: fixed;
+    width: 100%;
+    padding-left: 20px;
+    z-index: 100;
+}
+.cuerpo {
+    height: 100%;
+    padding-top: 70px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.perfil {
+    width: 16.5%;
+}
+.contenido {
+    width: 66%;
+    min-height: 75vh;
+}
+.social {
+    width: 16.5%;
+}
+.footer {
+    height: 100px;
+    background-color: rgb(43, 44, 44);
+}
+span {
+    background-color: rgb(43, 44, 44);
 }

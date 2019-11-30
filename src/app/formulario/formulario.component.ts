@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UsuariosService } from '../services/usuarios.service';
 
 @Component({
   selector: 'app-formulario',
@@ -10,7 +11,8 @@ export class FormularioComponent implements OnInit {
 
   formulario: FormGroup;
 
-  constructor() {
+  constructor(private usuariosService: UsuariosService) {
+
     this.formulario = new FormGroup(
       {
         nombre: new FormControl('', [Validators.required, Validators.maxLength(20)]),
@@ -32,7 +34,12 @@ export class FormularioComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formulario.value)
+    this.usuariosService.guardarUsuario(this.formulario.value)
+      .then((response) => {
+        console.log('que pacha', response);
+      }).catch((err) => {
+        console.log('errorsito', err);
+      });
   }
 
   passwordValidator(form: FormGroup) {

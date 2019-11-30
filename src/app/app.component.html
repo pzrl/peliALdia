@@ -1,11 +1,18 @@
-<div class="">
-    <app-navegador></app-navegador>
-    <div class="px-5">
-        <div class="col-3 float-left px-0">
-            <app-lateral></app-lateral>
+<div>
+    <div class="navegador">
+        <app-navegador></app-navegador>
+    </div>
+    <div class="cuerpo">
+        <div class="perfil px-0">
+            <app-lateral class="position-fixed"></app-lateral>
         </div>
-        <div class="col-9 float-left px-0">
+        <div class="contenido position-relative px-0">
             <router-outlet></router-outlet>
         </div>
+        <div class="social px-0 py-5">
+            <app-social class="position-fixed"></app-social>
+        </div>
+
     </div>
+    <div class="footer col-12 text-center pt-5">© peli<span class="font-italic">AL</span>dia - created by pzrl</div>
 </div>

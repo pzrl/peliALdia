@@ -2,12 +2,21 @@ nav {
     height: 90px;
     background-color: rgb(0, 80, 76);
 }
-a {
-    font-size: 35px;
-}
-input {
-    border: white;
+.navbar-brand, span {
+    font-size: 20px;
+    color: white;
 }
 a span {
     font-style: italic;
+}
+
+input, form button, select {
+    border: white;
+    background-color: rgb(0, 80, 76);
+    border: 1px solid rgb(212, 245, 244);
+    color:rgb(212, 245, 244);
+}
+
+.buscador {
+    float: right
 }

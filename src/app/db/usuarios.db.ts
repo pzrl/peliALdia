@@ -22,5 +22,4 @@ export const USUARIOS: Usuario[] = [
         usuario: 'apl85',
         cita: 'Sigue nadando.'
     }
-
 ]

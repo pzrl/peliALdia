@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavegadorComponent implements OnInit {
 
+  consulta: string;
+
   constructor() { }
 
   ngOnInit() {
