@@ -1,0 +1,18 @@
+aside {
+    color: rgb(212, 245, 244);
+}
+
+h1 {
+    font-size: 50px;
+}
+.cita {
+    font-size: 12px;
+    font-style: italic;
+    overflow: break-word;
+}
+img {
+    width: 50px;
+}
+#nota {
+    height: 80px;
+}

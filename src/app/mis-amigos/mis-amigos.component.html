@@ -1,0 +1,22 @@
+<div class="amigos">
+    <h5>Mis amigos</h5>
+    <div class="card my-3" style="max-width: 100%;" *ngFor="let amigo of arrAmigos">
+        <div class="row no-gutters p-3" max-height="200px">
+
+            <div class="col-2">
+                <a [routerLink]="['/usuario/', amigo.id]">
+                    <img [src]="'../../assets/avatares/' + amigo.avatar + '.jpg'" class="img-fluid rounded-circle"
+                        width="100px">
+                </a>
+            </div>
+
+            <div class="col-10">
+                <div class="card-body">
+                    <h5 class="card-title"><a [routerLink]="['/amigo/', amigo.id]">{{ amigo.usuario }}</a>
+                    </h5>
+                    <p class="card-text">{{ amigo.cita }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

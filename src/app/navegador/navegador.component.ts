@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PeliculasService } from '../services/peliculas.service';
 
 @Component({
   selector: 'app-navegador',
@@ -8,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
 export class NavegadorComponent implements OnInit {
 
   consulta: string;
+  oculto: boolean;
 
-  constructor() { }
+  constructor(private peliculasService: PeliculasService) { }
 
   ngOnInit() {
+    this.oculto = false;
+  }
+
+  onClick($event) {
+    this.peliculasService.cargarAPI()
+      .then(res => console.log(res));
+  }
+
+  onClickPerfil() {
+    this.oculto = !this.oculto;
   }
 
 }

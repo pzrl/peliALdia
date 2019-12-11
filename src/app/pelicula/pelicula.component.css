@@ -1,12 +1,18 @@
 
 .pelicula {
-    border: 1px solid rgb(212, 245, 244);
-    border-radius: 5px;
+    max-width: 100%;
 }
 .foto {
     border-radius: 5px;
+    width: 200px;
+}
+select {
+    background-color: rgb(0, 80, 76);
+    border: 1px solid rgb(212, 245, 244);
+    border-radius: 2px;
 }
 button {
+    background-color: rgb(0, 80, 76);
     border: none
 }
 button:hover {

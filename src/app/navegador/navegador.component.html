@@ -1,18 +1,40 @@
-<nav class="navbar navbar-expand-lg pl-0">
-    <div class="col-2 px-0">
+<nav>
+    <div class="logo">
         <a class="navbar-brand" href="#">peli<span>AL</span>dia</a>
     </div>
-    <ul class="nav d-inline-block col-8">
-        <li class="nav-item d-inline-block"><a class="nav-link" href="#">amigos</a></li>
-        <li class="nav-item d-inline-block"><a class="nav-link" href="#">pelis</a></li>
-        <li class="nav-item d-inline-block"><a class="nav-link" href="#">cines</a></li>
-    </ul>
-    <div class="collapse navbar-collapse col-2">
-        <form class="buscador form-inline input-group" #formulario="ngForm">
-            <input class="form-control col-9" type="search" name="item" ngModel>
-            <div class="input-group-append">
-                <button class="btn" type="submit" [routerLink]="['/busqueda/', formulario.value.item]">P</button>
+    <div class="navegador">
+        <div class="bloque links">
+            <ul class="nav d-inline-block">
+                <li class="nav-item d-inline-block"><a class="nav-link" [routerLink]="['perfil/amigos']">amigos</a>
+                </li>
+                <li class="nav-item d-inline-block"><a class="nav-link" [routerLink]="['perfil/peliculas']">pelis</a>
+                </li>
+                <li class="nav-item d-inline-block"><a class="nav-link" [routerLink]="['perfil/cines']">cines</a></li>
+                <button (click)="onClick()">Cargar API</button>
+            </ul>
+        </div>
+
+        <div class="dropdown bloque">
+            <button (click)="onClickPerfil()" class="dropbtn"><img src="../../assets/avatares/tyrion.jpg"
+                    class="rounded-circle" width="25px;"></button>
+            <div class="myDropdown" class="dropdown-contenido" *ngIf="oculto">
+                <ul>
+                    <li><a [routerLink]="['editarPerfil']">Ajustes del perfil</a></li>
+                    <li><a [routerLink]="['login']">Doblar servilleta</a></li>
+
+                </ul>
+
+
             </div>
-        </form>
+
+        </div>
+        <div class="bloque search">
+            <form class="buscador form-inline input-group" #formulario="ngForm">
+                <input class="buscador form-control" type="search" name="item" ngModel>
+                <div class="input-group-append">
+                    <button class="btn" type="submit" [routerLink]="['/busqueda/', formulario.value.item]"></button>
+                </div>
+            </form>
+        </div>
     </div>
 </nav>

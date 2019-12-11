@@ -1,51 +1,50 @@
 <div class="principal p-4">
 
-    <div class="card mb-3 " style="width: 100%;  height: auto">
+    <div class="usuario mb-3">
 
 
-        <div class="row no-gutters p-3">
-            <div class="col-md-4">
-                <img src="../../assets/provisional-images/{{usuario.avatar}}" class="img-fluid rounded-circle"
-                    width="150px">
+        <div class="row no-gutters p-4">
+            <div class="col-md-2">
+                <img src="../../assets/avatares/{{usuario?.avatar}}.jpg" class="img-fluid rounded-circle">
             </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h2 class="card-title">{{ usuario.usuario }}</h2>
-                    <p class="font-italic">{{ usuario.cita }}</p>
+            <div class="col-md-10 pl-3">
+                <div class="card-body pt-0">
+                    <h2 class="card-title">{{ usuario?.usuario }}</h2>
+                    <p class="font-italic">{{ usuario?.cita }}</p>
 
                     <div class="clearfix">
                         <div class="float-left mr-5">
-                            <h2 class="display-inline">250*</h2>
+                            <h2 class="display-inline">{{ usuario?.peliculasPuntuadas }}</h2>
                             <p class="display-inline">pelis vistas</p>
                         </div>
                         <div class="float-left mr-5">
-                            <h2>70*</h2>
+                            <h2>{{ usuario?.peliculasPendientes }}</h2>
                             <p>pelis pendientes</p>
                         </div>
                         <div class="float-left mr-5">
-                            <h2>5.5</h2>
+                            <h2>{{ usuario?.puntuacionMedia }}</h2>
                             <p>valoración media</p>
                         </div>
                     </div>
 
-
+                    <div class="pendientes">
+                        <p>
+                            <button *ngIf="follow" (click)="onClickFollow($event.target.value)"
+                                value="1">Seguir</button>
+                            <button *ngIf="!follow" (click)="onClickFollow($event.target.value)" value="0">Dejar de
+                                seguir</button>
+                            <button *ngIf="block" (click)="onClickBlock($event.target.value)"
+                                value="1">Bloquear</button>
+                            <button *ngIf="!block" (click)="onClickBlock($event.target.value)"
+                                value="0">Desbloquear</button>
+                        </p>
+                    </div>
 
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container pt-5">
-        <p>Aqui debajo van las conversaciones</p>
-        <div class="conversaciones my-5 p-4" *ngFor="let post of arrPosts">
-            <p>{{post}}</p>
-
-        </div>
-        <form [formGroup]="formulario" (ngSubmit)="onSubmit(formulario.post)">
-            <textarea class="col-12" rows="4" formControlName="post"></textarea>
-            <input type="submit" class="btn btn-outline-light" value="Enviar">
-        </form>
-    </div>
-
+    <app-chat></app-chat>
 
 </div>

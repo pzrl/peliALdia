@@ -2,22 +2,77 @@
     background-color: rgb(0, 80, 76);
     height: 100%;
 }
-
 .bloquePeliculas {
-    display: flex; 
-    height: 100%;
     width: 100%;
+    height: 240px;
+    display: inline-block;
     overflow-x: auto;
+    overflow-y: hidden;
+}
+.peli {
+    width: 140px;
+    display: inline-block;
+    position: relative;
+}
+img {
+    display:block;
+    height: 200px;
+}
+.peli .velo {
+    background-color: rgba(128, 128, 128, 0.685);
+    z-index: 5;
+    height: 200px;
+    width: 97%;
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 3px;
+}
+.peli:hover .velo {
+    display: block;
+}
+ul {
+    list-style: none;
+    text-align: center;
+    padding-top: 15px;
+    padding-left: 0px;
+}
+ul li {
+    color: white;
+    font-weight: bold;
 }
 
 .peli button {
-    font-weight: bold;
     border-radius: 10%;
     border: none;
-    background-color: rgb(197, 25, 25);
+    background-color: transparent;
     margin: 0 5px;
     color: rgb(212, 245, 244);
-    position: relative;
-    top: -198px;
-    left: 108px;
+
+}
+.peli button:hover {
+    color: rgb(197, 25, 25);
+    font-weight: bold;
+}
+.peli button:focus {
+    outline: none;
+}
+
+.scroll {
+  white-space: nowrap;
+
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.scroll::-webkit-scrollbar {
+    width: 1px;
+    height: 8px;
+}
+.scroll::-webkit-scrollbar-track {
+   /*  -webkit-box-shadow: inset 0 0 1px rgb(212, 245, 244);  */
+    border-radius: 10px;
+}
+.scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(212, 245, 244, 0.144);
 }

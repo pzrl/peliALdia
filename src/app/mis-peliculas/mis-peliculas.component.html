@@ -1,0 +1,56 @@
+<div class="peliculas">
+    <select name="" id="">
+        <option value="pendientes">Pendientes</option>
+        <option value="vistas">Vistas</option>
+    </select>
+
+    <div class="pendientes">
+        <h5>Pelis pendientes</h5>
+
+        <div class="card my-3" style="max-width: 100%;">
+            <div class="row no-gutters p-3" max-height="200px">
+
+                <div class="col-2">
+                    <a [routerLink]="['/pelicula/', pelicula.id]">
+                        <img src="{{ pelicula.imagen }}" class="img-fluid" width="100px">
+                    </a>
+                </div>
+                <div class="col-10">
+                    <div class="card-body">
+                        <h5 class="card-title"><a [routerLink]="['/pelicula/', pelicula.id]"> {{ pelicula.titulo }}
+                            </a>
+                        </h5>
+                        <p class="card-text">Año: {{ pelicula.anio }}</p>
+                        <p class="card-text">Director: {{ pelicula.director }}</p>
+                        <p class="card-text">Reparto: {{ pelicula.reparto }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="vistas">
+        <h5>Pelis vistas</h5>
+
+        <div class="card my-3" style="max-width: 100%;">
+            <div class="row no-gutters p-3" max-height="200px">
+
+                <div class="col-2">
+                    <a [routerLink]="['/pelicula/', pelicula.id]">
+                        <img src="{{ pelicula.imagen }}" class="img-fluid" width="100px">
+                    </a>
+                </div>
+                <div class="col-10">
+                    <div class="card-body">
+                        <h5 class="card-title"><a [routerLink]="['/pelicula/', pelicula.id]"> {{ pelicula.titulo }}
+                            </a>
+                        </h5>
+                        <p class="card-text">Año: {{ pelicula.anio }}</p>
+                        <p class="card-text">Director: {{ pelicula.director }}</p>
+                        <p class="card-text">Reparto: {{ pelicula.reparto }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

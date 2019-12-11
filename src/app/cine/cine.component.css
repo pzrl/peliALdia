@@ -1,2 +1,45 @@
+.cine {
+    border-radius: 5px;
+}
+.peliculas {
+    display: flex;
+    flex-wrap: wrap;
+}
+.pelicula {
+    width: 50%; 
+    height: 190px
+}
+.foto {
+    border-radius: 5px;
+}
+h4 {
+    color: white;
+}
 
-
+button {
+    border: none
+}
+button:hover {
+    color: white;
+}
+button:focus {
+    outline: none;
+}
+.reseñas {
+    height: auto;
+    border: 1px solid rgb(212, 245, 244);
+    border-radius: 3px;
+}
+textarea {
+    background-color:  rgb(212, 245, 244);
+    color:rgb(0, 80, 76);
+}
+.autor {
+    font-style: italic;
+    font-size: 10px;
+    text-align: right;
+}
+.fecha {
+    font-size: 10px;
+    text-align: right;
+}

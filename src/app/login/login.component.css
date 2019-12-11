@@ -1,0 +1,21 @@
+.cuerpo {
+    min-height: 77vh;
+}
+.formulario {
+    width: 400px;
+    padding-top: 125px;
+}
+a {
+    color: white;
+    font-weight: bold;
+    margin-left: 10px;
+}
+button:focus {
+    outline: none;
+}
+.alerta {
+    margin-top: 5px;
+    color: darkgoldenrod;
+    font-size: 10px;
+    font-weight: bold;
+}

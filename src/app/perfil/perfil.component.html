@@ -1,0 +1,28 @@
+<aside class="p-4 text-center">
+    <div class="mb-3">
+        <a [routerLink]="['editarPerfil']">
+            <img src="../../assets/avatares/{{arrUsuario?.avatar}}.jpg" class="img-fluid rounded-circle">
+        </a>
+    </div>
+    <div>
+        <h2>{{arrUsuario?.usuario}}</h2>
+        <p class="cita">{{arrUsuario?.cita}}</p>
+    </div>
+
+    <div>
+        <h1 class="display-inline">{{arrUsuario?.peliculasPuntuadas}}</h1>
+        <p class="display-inline">pelis vistas</p>
+    </div>
+
+    <div>
+        <h1>{{arrUsuario?.peliculasPendientes}}</h1>
+        <p>pelis pendientes</p>
+    </div>
+
+    <div>
+        <h1>{{arrUsuario?.puntuacionMedia}}</h1>
+        <p>valoración media</p>
+    </div>
+
+
+</aside>

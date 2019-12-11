@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PeliculasService } from '../services/peliculas.service';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  arrPeliculasVistas: [];
+
+  constructor(private peliculasService: PeliculasService) { }
 
   ngOnInit() {
+    this.peliculasService.getPeliculasVistas(localStorage.token_peliALdia)
+      .then(result => { console.log(result), this.arrPeliculasVistas = result })
+      .catch(err => console.log(err));
+
+
+
+
   }
 
 }

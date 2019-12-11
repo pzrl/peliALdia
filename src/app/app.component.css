@@ -1,26 +1,31 @@
+
 .navegador {
-    height: 60px;
-    background-color: rgb(0, 80, 76);
+    height: 40px;
     position: fixed;
     width: 100%;
-    padding-left: 20px;
     z-index: 100;
-}
+} 
 .cuerpo {
     height: 100%;
-    padding-top: 70px;
+    padding-top: 40px;
     display: flex;
     flex-wrap: wrap;
 }
 .perfil {
     width: 16.5%;
+    background-color: rgb(0, 65, 61);
+}
+.appPerfil {
+    width: 16.5%;
 }
 .contenido {
-    width: 66%;
+    width: 67%;
     min-height: 75vh;
+    background-color: rgb(0, 80, 76)
 }
 .social {
     width: 16.5%;
+    background-color: rgb(0, 65, 61);
 }
 .footer {
     height: 100px;

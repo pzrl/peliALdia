@@ -1,5 +1,14 @@
 ul {
     list-style: none;
+    padding-left: 22px;
+    padding-bottom: 15px;
+    margin-top: -10px;
+}
+li {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
 }
 .foto, a {
     display: inline-block;
@@ -8,5 +17,13 @@ img {
     width: 25px;
 }
 a {
-    font-size: 60%;
+    font-size: 80%;
+}
+p {
+    padding-left: 20px;
+}
+
+
+button:focus {
+    outline: none;
 }

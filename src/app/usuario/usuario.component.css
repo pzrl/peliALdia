@@ -1,21 +1,22 @@
 .principal {
-    background-color: #ecf0f1;
-}
-.principal {
     background-color: rgba(0, 80, 76, 0.5);
 }
+.usuario {
+    border-radius: 5px;
+    width: 100%;  
+    height: auto;
+    background-color: rgb(31, 97, 94);
+}
 .img-fluid {
-    max-width: 70%; 
-    max-height: auto; 
+    width: 150px;
     margin-bottom: 20px;
 }
-
-.conversaciones {
-    height: auto;
-    border: 1px solid rgb(212, 245, 244);
-    border-radius: 3px;
+button {
+    border: none
 }
-textarea {
-    background-color:  rgb(212, 245, 244);
-    color:rgb(0, 80, 76);
+button:hover {
+    color: white;
+}
+button:focus {
+    outline: none;
 }

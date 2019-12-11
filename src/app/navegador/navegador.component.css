@@ -1,13 +1,32 @@
 nav {
-    height: 90px;
     background-color: rgb(0, 80, 76);
+    width: 100%;
+}
+.logo {
+    width: 250px;
+    float:left;
+    text-align: center;
 }
 .navbar-brand, span {
     font-size: 20px;
     color: white;
 }
+.navegador {   
+    width: 100%;
+}
 a span {
     font-style: italic;
+}
+.bloque {
+    display: inline-block;  
+}
+.links {
+    width: 350px;
+}
+.search {
+    float: right;
+    margin-right: 130px;
+    margin-top: 8px;
 }
 
 input, form button, select {
@@ -16,7 +35,57 @@ input, form button, select {
     border: 1px solid rgb(212, 245, 244);
     color:rgb(212, 245, 244);
 }
+button:focus {
+    outline: none;
+}
+form input {
+    height: 25px;
+    width:100px;
+    display: inline-block;
+    border-right: none;
+}
+form div {
+    display: inline-block;
+}
+form button {
+    content: "";
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    border-left: none;
+    vertical-align: top;
+    background-color: transparent;
+    background-position : center;
+    background-image: url('../../assets/icons/lupita.png');
+    background-repeat:no-repeat;
+    background-size: 70% 70%;
+}
+.dropdown {
+    float: right;
+    margin-top: 8px;
+    margin-right: 20px;
+}
+.dropdown button {
+    padding-right: 80px;
+}
+.dropdown-contenido ul {
+    list-style: none;
+    width: 110px;
+    margin: 0px;
+    margin-top: 5px;
+    padding: 0px;
+    background-color: rgb(0, 80, 76);
+}
+.dropdown-contenido li {
+border: 1px solid rgb(212, 245, 244);
+padding-left: 4px;
+padding-top: 2px;
+padding-bottom: 2px;
+}
 
-.buscador {
-    float: right
+.oculto {
+    display: none;
+}
+.dropdown-contenido a {
+    font-size: 80%;
 }

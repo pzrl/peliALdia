@@ -1,0 +1,12 @@
+<div class="container pt-5">
+    <h5>Chat</h5>
+    <div class="conversaciones my-5 p-4" *ngFor="let post of arrPosts">
+        <p class="post">{{post.post}}</p>
+        <p class="autor">{{post.autor}}</p>
+        <p class="fecha">{{post.fecha}}</p>
+    </div>
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit(formulario.post)">
+        <textarea class="col-12" rows="4" formControlName="post"></textarea>
+        <input type="submit" class="btn btn-outline-light" value="Enviar" [disabled]="formulario.invalid">
+    </form>
+</div>

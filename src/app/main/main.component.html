@@ -5,111 +5,139 @@
             <h3>Últimas pelis vistas</h3>
             <div class="carrusel">
 
-                <div class="bloquePeliculas">
-                    <div class="peli">
-                        <a [routerLink]="'/pelicula/id'"><img
-                                src="https://a.ltrbxd.com/resized/sm/upload/sw/w2/ep/v4/9O50TVszkz0dcP5g6Ej33UhR7vw-0-460-0-690-crop.jpg?k=604246a795"
-                                class="rounded mx-1" height="200px"></a>
-                        <p class="text-center">16/10</p>
+                <div class="bloquePeliculas scroll">
+                    <div class="peli" *ngFor="let pelicula of arrPeliculasVistas">
+                        <a [routerLink]="['/pelicula/', pelicula.id]">
+                            <img src="{{pelicula.imagen}}" class="rounded mx-1">
+                        </a>
+                        <p class=" text-center">{{pelicula.fechaVista}}</p>
                     </div>
-                    <div class="peli">
-                        <a [routerLink]="'/pelicula/id'"><img
-                                src="https://a.ltrbxd.com/resized/film-poster/5/0/6/2/0/50620-planet-terror-0-460-0-690-crop.jpg?k=a52e390a0b"
-                                class="rounded mx-1" height="200px"></a>
-                        <p class="text-center">31/10</p>
-                    </div>
-                    <div class="peli">
-                        <a [routerLink]="'/pelicula/id'"><img
-                                src="https://a.ltrbxd.com/resized/sm/upload/dr/hr/pz/ez/ehLb2SQ3djlA1FrQKbP2WO3VH09-0-460-0-690-crop.jpg?k=ec31daa3b1"
-                                class="rounded mx-1" height="200px"></a>
-                        <p class="text-center">05/11</p>
-                    </div>
-                    <div class="peli">
-                        <a [routerLink]="'/pelicula/id'"><img
-                                src="https://a.ltrbxd.com/resized/sm/upload/5j/ag/wy/k3/bwCC7klDpDcVtEXDK74vDzXLyeF-0-460-0-690-crop.jpg?k=d75e4f6144"
-                                class="rounded mx-1" height="200px"></a>
-                        <p class="text-center">7/11</p>
-                    </div>
-                    <div class="peli">
-                        <a [routerLink]="'/pelicula/id'"><img
-                                src="https://a.ltrbxd.com/resized/film-poster/4/8/5/7/1/48571-into-the-wild-0-460-0-690-crop.jpg?k=5d5f8146e3"
-                                class="rounded mx-1" height="200px"></a>
-                        <p class="text-center">20/11</p>
-                    </div>
-                    <div class="peli">
-                        <a [routerLink]="'/pelicula/id'"><img
-                                src="https://a.ltrbxd.com/resized/sm/upload/78/y5/zg/ej/oefdD26aey8GPdx7Rm45PNncJdU-0-460-0-690-crop.jpg?k=4e8014758e"
-                                class="rounded mx-1" height="200px"></a>
-                        <p class="text-center">20/11</p>
-                    </div>
-                    <div class="peli">
-                        <a [routerLink]="'/pelicula/id'"><img
-                                src="https://a.ltrbxd.com/resized/film-poster/5/0/9/5/6/50956-raging-bull-0-460-0-690-crop.jpg?k=489d7cdab1 "
-                                class="rounded mx-1" height="200px"></a>
-                        <p class="text-center">20/11</p>
-                    </div>
-                    <div class="peli">
-                        <a [routerLink]="'/pelicula/id'"><img
-                                src="https://a.ltrbxd.com/resized/sm/upload/90/gn/c7/9k/qAwFbszz0kRyTuXmMeKQZCX3Q2O-0-460-0-690-crop.jpg?k=3b44c1a91c"
-                                class="rounded mx-1" height="200px"></a>
-                        <p class="text-center">20/11</p>
-                    </div>
-
                 </div>
             </div>
         </section>
 
-
+        <!-- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa -->
 
         <section class="mt-5">
             <h3>Pelis en cine</h3>
 
             <div class="carrusel">
-
-                <div class="bloquePeliculas">
-
+                <div class="bloquePeliculas scroll">
                     <div class="peli">
-                        <a [routerLink]="'/pelicula/id'"><img
+                        <a class="linkPeli" [routerLink]="'/pelicula/id'"><img
                                 src="https://a.ltrbxd.com/resized/film-poster/3/9/7/8/5/9/397859-once-upon-a-time-in-hollywood-0-230-0-345-crop.jpg?k=786b351a9a"
                                 class="rounded mx-1" height="200px"></a>
+                        <div class="velo rounded">
+                            <ul>
+                                <li>Horarios:</li>
+                                <li><a href="">16:00</a></li>
+                                <li><a href="">18:00</a></li>
+                                <li><a href="">20:00</a></li>
+                                <li><a href="">22:00</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="peli">
                         <a [routerLink]="'/pelicula/id'"><img
                                 src="https://a.ltrbxd.com/resized/film-poster/3/3/3/2/0/3/333203-the-irishman-0-460-0-690-crop.jpg?k=b0c25564ed"
                                 class="rounded mx-1" height="200px"></a>
+                        <div class="velo rounded">
+                            <ul>
+                                <li>Horarios:</li>
+                                <li><a href="">16:00</a></li>
+                                <li><a href="">18:00</a></li>
+                                <li><a href="">20:00</a></li>
+                                <li><a href="">22:00</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="peli">
                         <a [routerLink]="'/pelicula/id'"><img
                                 src="https://a.ltrbxd.com/resized/film-poster/4/2/6/4/0/6/426406-parasite-0-460-0-690-crop.jpg?k=d3a3657c87"
                                 class="rounded mx-1" height="200px"></a>
+                        <div class="velo rounded">
+                            <ul>
+                                <li>Horarios:</li>
+                                <li><a href="">16:00</a></li>
+                                <li><a href="">18:00</a></li>
+                                <li><a href="">20:00</a></li>
+                                <li><a href="">22:00</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="peli">
                         <a [routerLink]="'/pelicula/id'"><img
                                 src="https://a.ltrbxd.com/resized/film-poster/4/0/6/7/7/5/406775-joker-0-460-0-690-crop.jpg?k=72dcdc129a"
                                 class="rounded mx-1" height="200px"></a>
+                        <div class="velo rounded">
+                            <ul>
+                                <li>Horarios:</li>
+                                <li><a href="">16:00</a></li>
+                                <li><a href="">18:00</a></li>
+                                <li><a href="">20:00</a></li>
+                                <li><a href="">22:00</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="peli">
                         <a [routerLink]="'/pelicula/id'"><img
                                 src="https://a.ltrbxd.com/resized/film-poster/5/2/2/2/0/9/522209-madre-0-460-0-690-crop.jpg?k=ba8d765756"
                                 class="rounded mx-1" height="200px"></a>
+                        <div class="velo rounded">
+                            <ul>
+                                <li>Horarios:</li>
+                                <li><a href="">16:00</a></li>
+                                <li><a href="">18:00</a></li>
+                                <li><a href="">20:00</a></li>
+                                <li><a href="">22:00</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="peli">
                         <a [routerLink]="'/pelicula/id'"><img
                                 src="https://a.ltrbxd.com/resized/film-poster/4/7/2/0/4/8/472048-the-endless-trench-0-460-0-690-crop.jpg?k=97ac45bb13"
                                 class="rounded mx-1" height="200px"></a>
+                        <div class="velo rounded">
+                            <ul>
+                                <li>Horarios:</li>
+                                <li><a href="">16:00</a></li>
+                                <li><a href="">18:00</a></li>
+                                <li><a href="">20:00</a></li>
+                                <li><a href="">22:00</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="peli">
                         <a [routerLink]="'/pelicula/id'"><img
                                 src="https://a.ltrbxd.com/resized/film-poster/2/9/1/4/1/9/291419-ford-v-ferrari-0-460-0-690-crop.jpg?k=3ac9a160ad"
                                 class="rounded mx-1" height="200px"></a>
+                        <div class="velo rounded">
+                            <ul>
+                                <li>Horarios:</li>
+                                <li><a href="">16:00</a></li>
+                                <li><a href="">18:00</a></li>
+                                <li><a href="">20:00</a></li>
+                                <li><a href="">22:00</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="peli">
                         <a [routerLink]="'/pelicula/id'"><img
                                 src="https://a.ltrbxd.com/resized/film-poster/4/6/9/9/7/1/469971-hustlers-0-300-0-450-crop.jpg?k=c756ab33ea"
                                 class="rounded mx-1" height="200px"></a>
+                        <div class="velo rounded">
+                            <ul>
+                                <li>Horarios:</li>
+                                <li><a href="">16:00</a></li>
+                                <li><a href="">18:00</a></li>
+                                <li><a href="">20:00</a></li>
+                                <li><a href="">22:00</a></li>
+                            </ul>
+                        </div>
                     </div>
 
                 </div>
+
             </div>
         </section>
 
@@ -118,71 +146,105 @@
 
             <div class="carrusel">
 
-                <div class="bloquePeliculas">
+                <div class="bloquePeliculas scroll">
                     <div class="peli">
-                        <p class="text-center">Estreno: 29/11</p>
                         <a [routerLink]="'/pelicula/id'">
                             <img src="https://a.ltrbxd.com/resized/film-poster/4/7/5/3/7/0/475370-knives-out-0-460-0-690-crop.jpg?k=1e257f781e"
                                 class="rounded mx-1" height="200px">
                         </a>
-                        <button>X</button>
+                        <div class="velo rounded">
+                            <ul>
+                                <li class="text-center">Titulo con enlace</li>
+                                <li class="text-center">Estreno: Fecha</li>
+                                <li class="text-center"><button>No me interesa</button></li>
+                            </ul>
+
+                        </div>
                     </div>
                     <div class="peli">
-                        <p class="text-center">Estreno: 20/12</p>
                         <a [routerLink]="'/pelicula/id'">
                             <img src="https://a.ltrbxd.com/resized/film-poster/1/3/1/9/8/4/131984-star-wars-the-rise-of-skywalker-0-460-0-690-crop.jpg?k=d46dc1ae10"
                                 class="rounded mx-1" height="200px">
                         </a>
-                        <button>X</button>
+                        <div class="velo rounded">
+                            <ul>
+                                <li class="text-center">Estreno: 29/11</li>
+                            </ul>
+                            <button>X</button>
+                        </div>
                     </div>
                     <div class="peli">
-                        <p class="text-center">Estreno: 31/01</p>
                         <a [routerLink]="'/pelicula/id'">
                             <img src="https://a.ltrbxd.com/resized/film-poster/4/3/3/8/6/3/433863-the-lighthouse-0-460-0-690-crop.jpg?k=21a8f11a00"
                                 class="rounded mx-1" height="200px">
                         </a>
-                        <button>X</button>
+                        <div class="velo rounded">
+                            <ul>
+                                <li class="text-center">Estreno: 29/11</li>
+                            </ul>
+                            <button>X</button>
+                        </div>
                     </div>
 
                     <div class="peli">
-                        <p class="text-center">Estreno: 31/01</p>
                         <a [routerLink]="'/pelicula/id'">
                             <img src="https://a.ltrbxd.com/resized/film-poster/2/1/8/2/5/4/218254-richard-jewell-0-460-0-690-crop.jpg?k=166a72afeb"
                                 class="rounded mx-1" height="200px">
                         </a>
-                        <button>X</button>
+                        <div class="velo rounded">
+                            <ul>
+                                <li class="text-center">Estreno: 29/11</li>
+                            </ul>
+                            <button>X</button>
+                        </div>
                     </div>
                     <div class="peli">
-                        <p class="text-center">Estreno: 3/02</p>
                         <a [routerLink]="'/pelicula/id'">
                             <img src="https://a.ltrbxd.com/resized/film-poster/4/6/0/1/5/5/460155-1917-0-460-0-690-crop.jpg?k=b14a3f98c4"
                                 class="rounded mx-1" height="200px">
                         </a>
-                        <button>X</button>
+                        <div class="velo rounded">
+                            <ul>
+                                <li class="text-center">Estreno: 29/11</li>
+                            </ul>
+                            <button>X</button>
+                        </div>
                     </div>
                     <div class="peli">
-                        <p class="text-center">Estreno: 10/02</p>
                         <a [routerLink]="'/pelicula/id'">
                             <img src="https://a.ltrbxd.com/resized/film-poster/4/4/4/6/0/0/444600-jojo-rabbit-0-460-0-690-crop.jpg?k=33f290280e"
                                 class="rounded mx-1" height="200px">
                         </a>
-                        <button>X</button>
+                        <div class="velo rounded">
+                            <ul>
+                                <li class="text-center">Estreno: 29/11</li>
+                            </ul>
+                            <button>X</button>
+                        </div>
                     </div>
                     <div class="peli">
-                        <p class="text-center">Estreno: 10/02</p>
                         <a [routerLink]="'/pelicula/id'">
                             <img src="https://a.ltrbxd.com/resized/film-poster/4/8/0/8/7/5/480875-dark-waters-0-460-0-690-crop.jpg?k=b824f0ec8b"
                                 class="rounded mx-1" height="200px">
                         </a>
-                        <button>X</button>
+                        <div class="velo rounded">
+                            <ul>
+                                <li class="text-center">Estreno: 29/11</li>
+                            </ul>
+                            <button>X</button>
+                        </div>
                     </div>
                     <div class="peli">
-                        <p class="text-center">Estreno: 10/02</p>
                         <a [routerLink]="'/pelicula/id'">
                             <img src="https://a.ltrbxd.com/resized/film-poster/2/5/9/4/4/1/259441-little-women-0-460-0-690-crop.jpg?k=38130d2e01"
                                 class="rounded mx-1" height="200px">
                         </a>
-                        <button>X</button>
+                        <div class="velo rounded">
+                            <ul>
+                                <li class="text-center">Estreno: 29/11</li>
+                            </ul>
+                            <button>X</button>
+                        </div>
                     </div>
 
 

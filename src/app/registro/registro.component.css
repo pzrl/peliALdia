@@ -1,0 +1,12 @@
+input.ng-invalid.ng-touched {
+    border: 1px solid firebrick;
+}
+.alerta {
+    color: darkgoldenrod;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+button:focus {
+    outline: none;
+}

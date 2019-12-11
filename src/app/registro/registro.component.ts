@@ -1,17 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsuariosService } from '../services/usuarios.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-formulario',
-  templateUrl: './formulario.component.html',
-  styleUrls: ['./formulario.component.css']
+  selector: 'app-registro',
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.css']
 })
-export class FormularioComponent implements OnInit {
+export class RegistroComponent implements OnInit {
 
   formulario: FormGroup;
+  alertaCampos: {};
 
-  constructor(private usuariosService: UsuariosService) {
+  constructor(
+    private usuariosService: UsuariosService,
+    private router: Router
+  ) {
+    this.alertaCampos = {
+      user: false,
+      email: false
+    };
 
     this.formulario = new FormGroup(
       {
@@ -22,7 +31,7 @@ export class FormularioComponent implements OnInit {
         password: new FormControl('', [Validators.required, Validators.minLength(6)]),
         rPassword: new FormControl('', [Validators.required]),
         avatar: new FormControl('', [Validators.required]),
-        usuario: new FormControl('', [Validators.required]), // AÑADIR CONTROL CON LA BASE DE DATOS
+        usuario: new FormControl('', [Validators.required]),
         cita: new FormControl('', [Validators.required])
       },
       [this.passwordValidator]
@@ -34,22 +43,30 @@ export class FormularioComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.formulario.value)
     this.usuariosService.guardarUsuario(this.formulario.value)
-      .then((response) => {
-        console.log('que pacha', response);
+      .then((check) => {
+        console.log('hola desde el component', check);
+        if (check.user === false && check.email === false) {
+          this.router.navigateByUrl('/login');
+        }
+        this.alertaCampos = check;
       }).catch((err) => {
-        console.log('errorsito', err);
+        console.log(err);
       });
   }
 
   passwordValidator(form: FormGroup) {
+
     const passwordControl = form.controls['password'];
     const rPasswordControl = form.controls['rPassword'];
+
+    console.log('cotrol password', passwordControl, rPasswordControl)
 
     if (passwordControl.value === rPasswordControl.value) {
       return null;
     } else {
-      return { passwordvalidator: true }
+      return { passwordvalidator: true };
     }
   }
 

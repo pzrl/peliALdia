@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsuariosService } from '../services/usuarios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +10,14 @@ import { UsuariosService } from '../services/usuarios.service';
 })
 export class LoginComponent implements OnInit {
 
+  alertaLogin: boolean;
   acceso: FormGroup;
 
-  constructor(private usuariosService: UsuariosService) {
+  constructor(
+    private usuariosService: UsuariosService,
+    private router: Router
+  ) {
+    this.alertaLogin = false;
     this.acceso = new FormGroup(
       {
         mail: new FormControl('', [Validators.required]),
@@ -21,13 +27,20 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    localStorage.removeItem('token_peliALdia');
   }
 
   onSubmit() {
     this.usuariosService.checkLogin(this.acceso.value)
-      .then((response) => {
-        console.log(response);
-        localStorage.setItem('usuario', response);
+      .then((res) => {
+        console.log(res)
+        if (res.alerta === true) {
+          this.alertaLogin = true;
+        } else {
+          localStorage.setItem('token_peliALdia', res.token);
+          this.router.navigateByUrl('/', { skipLocationChange: true })
+            .then(() => this.router.navigate(['/main']));
+        }
       }).catch((err) => {
         console.log('error en component', err);
       });

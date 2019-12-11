@@ -2,38 +2,37 @@
 
     <!-- FICHA PELICULA --------------------------------------------- -->
 
-    <div class="pelicula mb-3 pt-3" style="max-width: 100%;">
-        <div class="row no-gutters pl-3">
-            <div class="col-md-4">
-                <img [src]="pelicula.imagen" class="foto img-fluid" width="200px">
+    <div class="pelicula mb-3 pt-3">
+        <div class=" row no-gutters p-4">
+            <div class="col-md-2">
+                <img [src]="pelicula.imagen" class="foto img-fluid">
             </div>
-            <div class="col-md-8">
-                <div class="card-body">
+            <div class="col-md-10 pl-3">
+                <div class="card-body pt-0">
                     <h2 class="card-title"> {{ pelicula.titulo }} </h2>
                     <p class="card-text">Año: {{ pelicula.anio }}</p>
                     <p class="card-text">Duración: {{ pelicula.duracion }}</p>
                     <p class="card-text">Director: {{ pelicula.director }}</p>
                     <p class="card-text">Reparto: {{ pelicula.reparto }}</p>
-                    <p class="card-text">Sinopsis: {{ pelicula.sinopsis }}
-                    </p>
+                    <p class="card-text">Sinopsis: {{ pelicula.sinopsis }}</p>
 
                     <div class="puntuar">
                         <select name="" id="" (change)="onChange($event.target.value)">
-                            <option value="null" active></option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
+                            <option value="NULL" active></option>
+                            <option value="1" [selected]="puntuacion === 1">1</option>
+                            <option value="2" [selected]="puntuacion === 2">2</option>
+                            <option value="3" [selected]="puntuacion === 3">3</option>
+                            <option value="4" [selected]="puntuacion === 4">4</option>
+                            <option value="5" [selected]="puntuacion === 5">5</option>
                         </select>
-                        <h1></h1>
                         <p>valoración</p>
                     </div>
                     <div class="pendientes">
                         <p>
-                            <button (click)="onClick($event.target.value)" value="1">Añadir a pelis
+                            <button *ngIf="!pendiente" (click)="onClick($event.target.value)" value="1">Añadir a pelis
                                 pendientes</button>
-                            <button (click)="onClick($event.target.value)" value="0">Quitar de pelis pendientes</button>
+                            <button *ngIf="pendiente" (click)="onClick($event.target.value)" value="0">Quitar de pelis
+                                pendientes</button>
                         </p>
                     </div>
                 </div>
@@ -41,54 +40,6 @@
         </div>
     </div>
 
-    <div class="container pt-5">
-        <h5>Reseñas</h5>
+    <app-chat></app-chat>
 
-        <div class="reseñas my-5 p-4">
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
-                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
-                similique dolore! </p>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
-                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
-                similique dolore! </p>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
-                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
-                similique dolore! </p>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
-                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
-                similique dolore! </p>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
-                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
-                similique dolore! </p>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
-                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
-                similique dolore! </p>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
-                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
-                similique dolore! </p>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
-                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
-                similique dolore! </p>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
-                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
-                similique dolore! </p>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
-                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
-                similique dolore! </p>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
-                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
-                similique dolore! </p>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
-                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
-                similique dolore! </p>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, quos dicta pariatur eius
-                maxime vel velit ratione autem suscipit accusantium odit, nisi ipsum at laboriosam voluptates vitae ad
-                similique dolore! </p>
-
-        </div>
-        <form>
-            <textarea class="col-12" rows="4"></textarea>
-            <input type="submit" class="btn btn-outline-light" value="Enviar">
-        </form>
-    </div>
 </div>

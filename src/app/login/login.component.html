@@ -1,20 +1,20 @@
-<div class="login">
-    <form class="form-group pt-5" [formGroup]="acceso" (ngSubmit)="onSubmit()">
-        <div class="col-7">
+<div class="cuerpo">
+    <form class="formulario form-group mx-auto" [formGroup]=" acceso" (ngSubmit)="onSubmit()">
 
-            <div class="form-group form-check">
-                <input class="form-control" placeholder="Mail" type="mail" formControlName="mail">
-            </div>
-
-            <div class="form-group form-check">
-                <input class="form-control" placeholder="Contraseña" type="password" formControlName="password">
-            </div>
-
-            <div class="form-group form-check">
-                <input type="submit" class="btn btn-light" value="LogIn">
-                <a class="ml-5" [routerLink]="'/formulario'">¿No estás registrado? ¡Házlo ahora!</a>
-            </div>
-
+        <div class="form-group form-check pl-0">
+            <input class="form-control" placeholder="Mail" type="mail" formControlName="mail">
         </div>
+
+        <div class="form-group form-check pl-0">
+            <input class="form-control" placeholder="Contraseña" type="password" formControlName="password">
+            <p class="alerta" *ngIf="alertaLogin">Usuario y/o contraseña incorrectos.</p>
+        </div>
+
+        <div class="form-group form-check pl-0">
+            <input type="submit" class="btn btn-light" value="LogIn">
+        </div>
+        <p class="p-4">¿No estás registrado? <a [routerLink]="'/formulario'">¡CREA TU USUARIO!</a></p>
+
+
     </form>
 </div>

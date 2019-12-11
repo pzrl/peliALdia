@@ -1,73 +1,26 @@
-<div>
+<div class="social">
 
     <section>
-        <h5>Mis amigos han visto...</h5>
-        <ul class="pt-4">
-            <li>
-                <div class="foto"><a href=""><img src="../../assets/provisional-images/avatar1.jpg"
-                            class="img-fluid rounded-circle"></a>
-                </div>
-                <a class="ml-2">Madre</a>
+        <p>Pelis</p>
+        <ul>
+            <li *ngFor="let peli of peliculasVistas">
+                <a [routerLink]="['/usuario/', peli.usuario[0].id]" class="d-inline-block
+"><img src="../../assets/avatares/{{peli.usuario[0].avatar}}.jpg" class="img-fluid rounded-circle mr-2"></a>
+                <a [routerLink]="['/pelicula/', peli.pelicula[0].id]" class="t-nowrap">{{peli.pelicula[0].titulo}}</a>
             </li>
-            <li>
-                <div class="foto"><a href=""><img src="../../assets/provisional-images/avatar2.jpg"
-                            class="img-fluid rounded-circle"></a>
-                </div>
-                <a class="ml-2">La trinchera infinita</a>
-            </li>
-            <li>
-                <div class="foto"><a href=""><img src="../../assets/provisional-images/avatar2.jpg"
-                            class="img-fluid rounded-circle"></a>
-                </div>
-                <a class="ml-2">Ford vs Ferrari</a>
-            </li>
-            <li>
-                <div class="foto"><a href=""><img src="../../assets/provisional-images/avatar1.jpg"
-                            class="img-fluid rounded-circle"></a>
-                </div>
-                <a class="ml-2">El rey león</a>
-            </li>
-            <li>
-                <div class="foto"><a href=""><img src="../../assets/provisional-images/avatar2.jpg"
-                            class="img-fluid rounded-circle"></a>
-                </div>
-                <a class="ml-2">Frozen 2</a>
-            </li>
+
         </ul>
     </section>
     <section>
-        <h5>Mis amigos quieren ver...</h5>
-        <ul class="pt-4">
-            <li>
-                <div class="foto"><a href=""><img src="../../assets/provisional-images/avatar2.jpg"
-                            class="img-fluid rounded-circle"></a>
+        <p>Mensajes</p>
+        <ul>
+            <li *ngFor="let mensaje of ultimosMensajes">
+                <div class="foto"><a [routerLink]="['usuario/', mensaje.fk_usuario]"><img
+                            src="../../assets/avatares/{{mensaje.avatar}}.jpg" class="img-fluid rounded-circle"></a>
                 </div>
-                <a class="ml-2">El traidor</a>
+                <a [routerLink]="['usuario/', mensaje.fk_usuario]" class="ml-2">{{mensaje.post}}</a>
             </li>
-            <li>
-                <div class="foto"><a href=""><img src="../../assets/provisional-images/avatar1.jpg"
-                            class="img-fluid rounded-circle"></a>
-                </div>
-                <a class="ml-2">Midway</a>
-            </li>
-            <li>
-                <div class="foto"><a href=""><img src="../../assets/provisional-images/avatar1.jpg"
-                            class="img-fluid rounded-circle"></a>
-                </div>
-                <a class="ml-2">Los dos papas</a>
-            </li>
-            <li>
-                <div class="foto"><a href=""><img src="../../assets/provisional-images/avatar2.jpg"
-                            class="img-fluid rounded-circle"></a>
-                </div>
-                <a class="ml-2">Jumanji</a>
-            </li>
-            <li>
-                <div class="foto"><a href=""><img src="../../assets/provisional-images/avatar1.jpg"
-                            class="img-fluid rounded-circle"></a>
-                </div>
-                <a class="ml-2">Cats</a>
-            </li>
+
         </ul>
     </section>
 </div>

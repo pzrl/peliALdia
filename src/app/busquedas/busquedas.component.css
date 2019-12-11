@@ -1,3 +1,12 @@
-.todo {
+button:focus {
+    outline: none;
+}
+.card {
     background-color: rgb(0, 80, 76);
+}
+img {
+    width: 100px;
+}
+.pelicula {
+    border-radius: 5px;   
 }

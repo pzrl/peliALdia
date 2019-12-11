@@ -1,0 +1,14 @@
+<div class="cines">
+    <h5>Mis cines</h5>
+    <div class="card my-3" style="max-width: 100%;" *ngFor="let cine of arrCines">
+        <div class="row no-gutters p-3" max-height="200px">
+
+            <div class="col-10">
+                <div class="card-body">
+                    <h5 class="card-title"><a [routerLink]="['/cine/', cine.id ]">{{ cine.nombre }}</a></h5>
+                    <p class="card-text">{{ cine.direccion }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

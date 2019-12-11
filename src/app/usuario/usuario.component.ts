@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../services/usuarios.service';
-import { resolve } from 'url';
-import { reject } from 'q';
-import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario',
@@ -12,46 +9,68 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class UsuarioComponent implements OnInit {
 
-  /* arrUsuarios: any; */
   id: number;
   usuario: {};
-
-  formulario: FormGroup;
-  arrPosts: [];
+  token: string;
+  follow: boolean;
+  block: boolean;
 
   constructor(
     private usuariosService: UsuariosService,
-    private activatedRoute: ActivatedRoute
-  ) {
-    this.formulario = new FormGroup({ post: new FormControl('') });
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) { }
+
+  async ngOnInit() {
+    this.token = localStorage.token_peliALdia;
+    this.id = this.activatedRoute.params['_value'].idItem;
+
+    await this.usuariosService.getUsuarioById(this.id)
+      .then(res => { console.log('los datos del user', res); this.usuario = res });
+
+    await this.usuariosService.getDatosUsuarioUsuario(this.id, this.token)
+      .then(res => {
+        if (res[0] === undefined) {
+          this.follow = true;
+          this.block = true;
+        } else {
+          if (res[0].follow === 1) {
+            this.follow = false;
+          } else {
+            this.follow = true;
+          }
+          if (res[0].block === 1) {
+            this.block = false;
+          } else {
+            this.block = true;
+          }
+        }
+      })
+      .catch(err => console.log('da error', err));
   }
 
-  ngOnInit() {
-    this.id = this.activatedRoute.params['_value'].idUsuario;
-
-    this.usuariosService.getUsuario(this.id)
-      .then((res) => {
-        this.usuario = res;
-        console.log(this.usuario);
-      }).catch((err) => {
-        reject(err);
+  onClickFollow(event) {
+    const follow = {
+      amigo: this.id,
+      accion: event
+    };
+    this.usuariosService.followUser(this.token, follow)
+      .then(res => {
+        console.log('le folow', res);
+        this.router.navigateByUrl('/', { skipLocationChange: true })
+          .then(() => this.router.navigateByUrl('usuario/' + this.id));
       });
   }
 
-  /* onSubmit() {
-    const post = this.formulario.value.post;
-    console.log(this.formulario.value.post)
-    this.arrPosts.push(post);
-    console.log(this.arrPosts)
-  } */
-
+  onClickBlock(event) {
+    const block = {
+      amigo: this.id,
+      accion: event
+    };
+    this.usuariosService.blockUser(this.token, block)
+      .then(res => {
+        this.router.navigateByUrl('/', { skipLocationChange: true })
+          .then(() => this.router.navigateByUrl('usuario/' + this.id));
+      });
+  }
 }
-
-/*   recogerUsuarios() {
-    this.usuariosService.getAll()
-      .then((res) => {
-        this.arrUsuarios = res;
-      }).catch((err) => {
-        reject(err);
-      });
-  } */

@@ -1,0 +1,21 @@
+.conversaciones {
+    height: auto;
+    border-top: 0.5px solid rgb(212, 245, 244);
+
+}
+textarea {
+    background-color:  rgb(212, 245, 244);
+    color:rgb(0, 80, 76);
+}
+button:focus {
+    outline: none;
+}
+.autor {
+    nt-style: italic;
+    font-size: 10px;
+    text-align: right;
+}
+.fecha {
+    font-size: 10px;
+    text-align: right;
+}
