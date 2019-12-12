@@ -18,14 +18,9 @@ export class PerfilComponent implements OnInit {
 
   async ngOnInit() {
     await this.usuariosService.getMainUser(this.token)
-      .then(res => {
-        this.arrUsuario = res;
-      })
-      .catch(err => {
-        console.log('error en component');
-      });
+      .then(res => this.arrUsuario = res)
+      .catch(err => console.log('error en component'));
 
-    console.log('el perfil', this.arrUsuario)
   }
 
 

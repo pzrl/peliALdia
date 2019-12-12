@@ -76,3 +76,7 @@ ul li {
     border-radius: 10px;
     background-color: rgba(212, 245, 244, 0.144);
 }
+.scroll::-webkit-scrollbar-thumb:hover {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.164);
+}

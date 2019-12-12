@@ -58,8 +58,19 @@ export class PeliculasService {
         usertoken: pToken
       })
     };
-    return this.http.post(this.baseUrl + 'seenMovies', { body: 'Prueba' }, httpOptions).toPromise()
+    return this.http.post(this.baseUrl + 'seenMovies', { body: '' }, httpOptions).toPromise()
   }
+
+  getPeliculasPendientes(pToken): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        usertoken: pToken
+      })
+    };
+    return this.http.post(this.baseUrl + 'toSeeMovies', { body: '' }, httpOptions).toPromise()
+  }
+
+
 
   cargarAPI(): Promise<any[]> {
     return this.http.get<any[]>('http://localhost:3000/api/cogerPeliculas').toPromise()

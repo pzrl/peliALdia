@@ -9,14 +9,23 @@ import { PeliculasService } from '../services/peliculas.service';
 export class MisPeliculasComponent implements OnInit {
 
   arrPeliculasVistas: [];
+  arrPeliculasPendientes: [];
 
 
   constructor(private peliculasService: PeliculasService) { }
 
-  ngOnInit() {
-    this.peliculasService.getPeliculasVistas(localStorage.token_peliALdia)
-      .then(result => { console.log(result), this.arrPeliculasVistas = result })
+  async ngOnInit() {
+    await this.peliculasService.getPeliculasVistas(localStorage.token_peliALdia)
+      .then(result => this.arrPeliculasVistas = result)
       .catch(err => console.log(err));
+
+    await this.peliculasService.getPeliculasPendientes(localStorage.token_peliALdia)
+      .then(result => this.arrPeliculasPendientes = result)
+      .catch(err => console.log(err));
+  }
+
+  onChange(pChange) {
+    console.log('UN PUTO CHANGE', pChange)
   }
 
 }

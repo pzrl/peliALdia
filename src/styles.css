@@ -26,7 +26,11 @@ button {
     background-color: rgb(0, 80, 76);
     border: none
 }
+button:focus, select:focus, input:focus {
+    outline: none;
+}
 select {
     background-color: rgb(0, 80, 76);
     color: rgb(212, 245, 244);
+    border-radius: 2px;
 }

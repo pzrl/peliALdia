@@ -38,8 +38,7 @@ export class LoginComponent implements OnInit {
           this.alertaLogin = true;
         } else {
           localStorage.setItem('token_peliALdia', res.token);
-          this.router.navigateByUrl('/', { skipLocationChange: true })
-            .then(() => this.router.navigate(['/main']));
+          this.router.navigateByUrl('/main');
         }
       }).catch((err) => {
         console.log('error en component', err);
