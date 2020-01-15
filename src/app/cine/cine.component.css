@@ -59,6 +59,7 @@ input {
 }
 .sesiones {
     flex: 1;
+    padding-left: 20px;
 }
 .sesiones p {
     font-size: 18px;
@@ -86,6 +87,9 @@ input {
     padding: 4px 4px;
     width: 100px;
 }
+
+
+
 .info {
     font-family: 'ProximaNova-Thin';
     line-height : 1.25;

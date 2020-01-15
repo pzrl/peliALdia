@@ -41,7 +41,7 @@
     <div *ngIf="cartelera" class="cartelera">
         <div class="peliculas p-2">
             <div class="pelicula mb-3 p-2" *ngFor="let pelicula of arrPeliculas">
-                <div class="">
+                <div>
                     <a [routerLink]="['/in/pelicula/', pelicula?.id]"><img
                             src="http://localhost:3000/images/{{pelicula?.id}}.jpg" class="foto img-fluid"></a>
                 </div>
