@@ -14,14 +14,12 @@ export class LoginGuard {
 
   canActivate() {
     const token = localStorage.token_peliALdia;
-
-    /*   if (token) {
-        return true;
-      } else {
-        this.router.navigate(['/login']);
-        return false;
-      } */
-
+    if (token) {
+      return true;
+    } else {
+      this.router.navigate(['/login']);
+      return false;
+    }
   }
 
 }

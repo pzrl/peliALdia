@@ -18,12 +18,10 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
     this.alertaLogin = false;
-    this.acceso = new FormGroup(
-      {
-        mail: new FormControl('', [Validators.required]),
-        password: new FormControl('', [Validators.required])
-      }
-    );
+    this.acceso = new FormGroup({
+      mail: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
+    });
   }
 
   ngOnInit() {
@@ -33,18 +31,13 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.usuariosService.checkLogin(this.acceso.value)
       .then((res) => {
-        console.log(res)
         if (res.alerta === true) {
           this.alertaLogin = true;
         } else {
           localStorage.setItem('token_peliALdia', res.token);
-          this.router.navigateByUrl('/main');
+          this.router.navigateByUrl('/in/main');
         }
-      }).catch((err) => {
-        console.log('error en component', err);
       });
-
   }
-
 
 }

@@ -26,12 +26,50 @@ export class UsuariosService {
     return this.http.get<any>(this.baseUrl + 'amigos', httpOptions).toPromise();
   }
 
+  getAmigosDeAmigo(pId): Promise<any> {
+    const body = {
+      idAmigo: pId
+    };
+    return this.http.post<any>(this.baseUrl + 'amigosDeAmigo', body).toPromise();
+  }
+
+  getBloqueados(pToken): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        usertoken: pToken
+      })
+    };
+    return this.http.get<any>(this.baseUrl + 'bloqueados', httpOptions).toPromise();
+  }
+
   guardarUsuario(pNuevoUsuario): Promise<any> {
     return this.http.post(this.baseUrl + 'new', pNuevoUsuario).toPromise();
   }
 
-  getUsuarioById(pId): Promise<any[]> {
-    return this.http.get<any[]>(this.baseUrl + pId).toPromise();
+  actualizarPerfil(pPerfil, pToken): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        usertoken: pToken
+      })
+    };
+    const body = {
+      avatar: pPerfil.avatar,
+      cita: pPerfil.cita
+    };
+    return this.http.post(this.baseUrl + 'updateUser', body, httpOptions).toPromise();
+  }
+
+  getUsuarioById(pId, pToken): Promise<any[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        usertoken: pToken
+      })
+    };
+    return this.http.get<any[]>(this.baseUrl + pId, httpOptions).toPromise();
+  }
+
+  getAvatares(): Promise<any[]> {
+    return this.http.get<any[]>(this.baseUrl + 'avatares').toPromise()
   }
 
   checkToken(pToken): Promise<any> {
@@ -44,7 +82,6 @@ export class UsuariosService {
   }
 
   getMainUser(pToken): Promise<any> {
-    console.log('el perfil service ', pToken)
     const httpOptions = {
       headers: new HttpHeaders({
         usertoken: pToken

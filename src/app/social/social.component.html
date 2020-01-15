@@ -1,24 +1,37 @@
 <div class="social">
+    <h5 class="text-center">SOCIAL</h5>
 
     <section>
-        <p>Pelis</p>
+        <p>Películas</p>
+        <div *ngIf="sinAmigos">
+            <p class="aviso info">Aquí podrás ver las útimas pelis que han visto los usuarios a los que sigues.
+            </p>
+        </div>
         <ul>
             <li *ngFor="let peli of peliculasVistas">
-                <a [routerLink]="['/usuario/', peli.usuario[0].id]" class="d-inline-block
-"><img src="../../assets/avatares/{{peli.usuario[0].avatar}}.jpg" class="img-fluid rounded-circle mr-2"></a>
-                <a [routerLink]="['/pelicula/', peli.pelicula[0].id]" class="t-nowrap">{{peli.pelicula[0].titulo}}</a>
+                <a [routerLink]="['/in/usuario/', peli?.id]" class="d-inline-block
+" [title]="peli.usuario"><img src="../../assets/avatares/{{peli?.avatar}}.jpg"
+                        class="img-fluid rounded-circle mr-2"></a>
+                <a [routerLink]="['/in/pelicula/', peli?.idPelicula]" class="t-nowrap">{{peli?.titulo}}</a>
             </li>
 
         </ul>
     </section>
     <section>
         <p>Mensajes</p>
+        <div *ngIf="sinComentarios">
+            <p class="aviso info">Aquí aparecerán los mensajes que te dejen otros usuarios.
+            </p>
+        </div>
         <ul>
             <li *ngFor="let mensaje of ultimosMensajes">
-                <div class="foto"><a [routerLink]="['usuario/', mensaje.fk_usuario]"><img
-                            src="../../assets/avatares/{{mensaje.avatar}}.jpg" class="img-fluid rounded-circle"></a>
+                <div class="foto">
+                    <a [routerLink]="['/in/usuario/', mensaje?.fk_usuario]" [title]="mensaje?.autor">
+                        <img src="../../assets/avatares/{{mensaje?.avatar}}.jpg" class="img-fluid rounded-circle">
+                        <img *ngIf="mensaje?.nuevo" src="../../assets/icons/nuevo(1).png" class="nuevo">
+                    </a>
                 </div>
-                <a [routerLink]="['usuario/', mensaje.fk_usuario]" class="ml-2">{{mensaje.post}}</a>
+                <a [routerLink]="['/in/usuario/', mensaje?.fk_usuario]" class="ml-2">{{mensaje?.post}}</a>
             </li>
 
         </ul>

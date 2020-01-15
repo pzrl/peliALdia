@@ -22,6 +22,7 @@ import { MisPeliculasComponent } from './mis-peliculas/mis-peliculas.component';
 import { MisCinesComponent } from './mis-cines/mis-cines.component';
 import { MisAmigosComponent } from './mis-amigos/mis-amigos.component';
 import { InComponent } from './in/in.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { InComponent } from './in/in.component';
     MisPeliculasComponent,
     MisCinesComponent,
     MisAmigosComponent,
-    InComponent
+    InComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

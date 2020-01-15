@@ -13,30 +13,38 @@ import { MisPeliculasComponent } from './mis-peliculas/mis-peliculas.component';
 import { MisAmigosComponent } from './mis-amigos/mis-amigos.component';
 import { MisCinesComponent } from './mis-cines/mis-cines.component';
 import { LoginGuard } from './login.guard';
+import { InComponent } from './in/in.component';
+import { ErrorComponent } from './error/error.component';
 
+/* , canActivate: [LoginGuard] */
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/main' },
-  { path: 'login', component: LoginComponent },
-  { path: 'main', component: MainComponent/* , canActivate: [LoginGuard] */ },
-  { path: 'usuario/:idItem', component: UsuarioComponent/* , canActivate: [LoginGuard]  */ },
-  { path: 'pelicula/:idItem', component: PeliculaComponent/* , canActivate: [LoginGuard] */ },
-  { path: 'cine/:idItem', component: CineComponent/* , canActivate: [LoginGuard] */ },
+  { path: '', pathMatch: 'full', redirectTo: '/login' },
   { path: 'registro', component: RegistroComponent },
-  { path: 'editarPerfil', component: EditarPerfilComponent/* , canActivate: [LoginGuard] */ },
-  { path: 'busqueda/:consulta', component: BusquedasComponent/* , canActivate: [LoginGuard] */ },
+  { path: 'login', component: LoginComponent },
   {
-    path: 'perfil', component: CategoriasPerfilComponent/* , canActivate: [LoginGuard] */, children: [
-      { path: 'peliculas', component: MisPeliculasComponent },
-      { path: 'amigos', component: MisAmigosComponent },
-      { path: 'cines', component: MisCinesComponent }
+    path: 'in', component: InComponent, canActivate: [LoginGuard], children: [
+      { path: 'main', component: MainComponent },
+      { path: 'usuario/:idItem', component: UsuarioComponent },
+      { path: 'pelicula/:idItem', component: PeliculaComponent },
+      { path: 'cine/:idItem', component: CineComponent },
+      { path: 'editarPerfil', component: EditarPerfilComponent },
+      { path: 'busqueda/:consulta', component: BusquedasComponent },
+      {
+        path: 'perfil', component: CategoriasPerfilComponent, children: [
+          { path: 'peliculas', component: MisPeliculasComponent },
+          { path: 'amigos', component: MisAmigosComponent },
+          { path: 'cines', component: MisCinesComponent }
+        ]
+      },
+      { path: 'error404', component: ErrorComponent }
     ]
   },
-  { path: '**', redirectTo: '/main' },
+  { path: '**', redirectTo: '/in/main' }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { } 
+export class AppRoutingModule { }

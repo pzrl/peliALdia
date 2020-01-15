@@ -1,18 +1,41 @@
 aside {
     color: rgb(212, 245, 244);
 }
-
+aside div {
+    margin-bottom: 40px;
+}
 h1 {
     font-size: 50px;
+    padding: 0;
+    margin-bottom: -5px;
 }
 .cita {
-    font-size: 12px;
+    font-size: 85%;
     font-style: italic;
     overflow: break-word;
+    font-family: 'ProximaNova-Thin';
+}
+p {
+    font-family: 'ProximaNova-Thin';
 }
 img {
     width: 50px;
 }
 #nota {
     height: 80px;
+}
+
+
+@media (max-width: 950px) {
+    
+    h2 {
+        font-size: 180%;
+    }
+    h1 {
+       font-size: 260%;
+    }
+    p {
+        font-size: 85%;
+    }
+
 }

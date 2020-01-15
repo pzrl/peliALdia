@@ -2,34 +2,62 @@
     background-color: rgb(0, 80, 76);
     height: 100%;
 }
+
+.aviso {
+    font-size: 20px;
+    white-space: pre-line;
+}
 .bloquePeliculas {
     width: 100%;
-    height: 240px;
+    padding-top: 5px;
+    height: 225px;
     display: inline-block;
     overflow-x: auto;
     overflow-y: hidden;
 }
 .peli {
+    height: 200px;
     width: 140px;
     display: inline-block;
     position: relative;
+    overflow: hidden;
+    margin-right: 4px;
+    border-radius: 4px;
 }
 img {
     display:block;
+    min-height: 100%;
+    width: 100%;
+    position: relative;
+    border-radius: 4px;
+}
+.cargarMas {
     height: 200px;
+    vertical-align: top;
+    background-color: rgb(31, 97, 94);
+    border-radius: 4px;
+}
+.pasado {
+    left: 5px;
 }
 .peli .velo {
-    background-color: rgba(128, 128, 128, 0.685);
+    background-color: rgba(80, 80, 80, 0.753);
     z-index: 5;
-    height: 200px;
-    width: 97%;
+    height: 100%;
+    width:  100%;
     display: none;
     position: absolute;
     top: 0px;
-    left: 3px;
+    left: 4px;
+    overflow: scroll;
+    padding: 3px;
 }
+
 .peli:hover .velo {
-    display: block;
+    display: block; 
+}
+.velo::-webkit-scrollbar {
+  display: none;
 }
 ul {
     list-style: none;
@@ -37,25 +65,39 @@ ul {
     padding-top: 15px;
     padding-left: 0px;
 }
-ul li {
-    color: white;
+ul li p, ul li a, ul li button {
+    color: rgb(212, 245, 244);
     font-weight: bold;
 }
-
+.peli:hover a:hover {
+    color: white;
+}
+.titulo {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+select {
+    border: none;
+    text-align-last:center
+}
 .peli button {
     border-radius: 10%;
     border: none;
     background-color: transparent;
     margin: 0 5px;
     color: rgb(212, 245, 244);
-
 }
 .peli button:hover {
-    color: rgb(197, 25, 25);
+    background-color: rgb(212, 245, 244);
+    color: rgb(0, 80, 76);
     font-weight: bold;
 }
 .peli button:focus {
     outline: none;
+}
+select, option {
+    font-family: 'ProximaNova-Thin';
 }
 
 .scroll {
@@ -79,4 +121,10 @@ ul li {
 .scroll::-webkit-scrollbar-thumb:hover {
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.164);
+}
+.scroll {
+    scrollbar-width: none;
+}
+.velo {
+    scrollbar-width: none;      
 }

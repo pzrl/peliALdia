@@ -39,4 +39,13 @@ export class ChatService {
     return this.http.post(this.baseUrl + 'save', body, httpOptions).toPromise();
   }
 
+  editPost(pBody): Promise<any> {
+    console.log(pBody)
+    return this.http.post(this.baseUrl + 'edit', pBody).toPromise();
+  }
+
+  deletePost(pBody): Promise<any> {
+    return this.http.post(this.baseUrl + 'delete', pBody).toPromise();
+  }
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PeliculasService } from '../services/peliculas.service';
 import { UsuariosService } from '../services/usuarios.service';
+import { CinesService } from '../services/cines.service';
 
 @Component({
   selector: 'app-navegador',
@@ -11,28 +12,29 @@ export class NavegadorComponent implements OnInit {
 
   consulta: string;
   oculto: boolean;
+  linksOcultos: boolean;
   arrUsuario: [];
 
   constructor(
     private usuariosService: UsuariosService,
-    private peliculasService: PeliculasService
+    private cinesService: CinesService
   ) { }
 
   async ngOnInit() {
     this.oculto = false;
+    this.linksOcultos = false;
 
-    await this.usuariosService.getMainUser(localStorage.token_peliALdia)
-      .then(res => this.arrUsuario = res)
-      .catch(err => console.log('error en component'));
-  }
-
-  onClick($event) {
-    this.peliculasService.cargarAPI()
-      .then(res => console.log(res));
+    this.arrUsuario = await this.usuariosService.getMainUser(localStorage.token_peliALdia)
   }
 
   onClickPerfil() {
     this.oculto = !this.oculto;
+    this.linksOcultos = false;
+  }
+
+  onClickMenu() {
+    this.linksOcultos = !this.linksOcultos;
+    this.oculto = false;
   }
 
 }

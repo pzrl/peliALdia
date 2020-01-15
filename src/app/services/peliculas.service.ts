@@ -16,6 +16,11 @@ export class PeliculasService {
     return this.http.get<any[]>(this.baseUrl + pId).toPromise();
   }
 
+  getDatosPelicula(pId): Promise<any> {
+    const body = { idPelicula: pId };
+    return this.http.post(this.baseUrl + 'movieData', body).toPromise();
+  }
+
   getDatosPeliUsuario(pId, pToken): Promise<any> {
     const body = { idPelicula: pId };
     const httpOptions = {
@@ -58,7 +63,14 @@ export class PeliculasService {
         usertoken: pToken
       })
     };
-    return this.http.post(this.baseUrl + 'seenMovies', { body: '' }, httpOptions).toPromise()
+    return this.http.post(this.baseUrl + 'seenMovies', { body: '' }, httpOptions).toPromise();
+  }
+
+  getPeliculasVistasAmigo(pId): Promise<any> {
+    const body = {
+      idAmigo: pId
+    };
+    return this.http.post(this.baseUrl + 'seenMoviesFriend', body).toPromise();
   }
 
   getPeliculasPendientes(pToken): Promise<any> {
@@ -67,13 +79,39 @@ export class PeliculasService {
         usertoken: pToken
       })
     };
-    return this.http.post(this.baseUrl + 'toSeeMovies', { body: '' }, httpOptions).toPromise()
+    return this.http.post(this.baseUrl + 'toSeeMovies', { body: '' }, httpOptions).toPromise();
   }
 
-
-
-  cargarAPI(): Promise<any[]> {
-    return this.http.get<any[]>('http://localhost:3000/api/cogerPeliculas').toPromise()
+  getPeliculasPendientesAmigo(pId): Promise<any> {
+    const body = {
+      idAmigo: pId
+    };
+    return this.http.post(this.baseUrl + 'toSeeMoviesFriend', body).toPromise();
   }
+
+  getProximosEstrenos(pToken): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        usertoken: pToken
+      })
+    };
+    return this.http.post(this.baseUrl + 'proximosEsternos', { body: '' }, httpOptions).toPromise();
+  }
+
+  ocultarEstreno(pToken, pIdPelicula): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        usertoken: pToken
+      })
+    };
+    const body = {
+      idPelicula: pIdPelicula
+    };
+    return this.http.post(this.baseUrl + 'hideMovie', body, httpOptions).toPromise();
+  }
+
+  /*  cargarMasPeliculas(pCategoria): Promise<any> {
+     return this.http.post(this.baseUrl + 'loadMoreMovies', pCategoria).toPromise();
+   } */
 
 }

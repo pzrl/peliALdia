@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialService } from '../services/social.service';
+import { UsuariosService } from '../services/usuarios.service';
 
 @Component({
   selector: 'app-social',
@@ -11,8 +12,13 @@ export class SocialComponent implements OnInit {
   token: string;
   peliculasVistas: {};
   ultimosMensajes: {};
+  sinAmigos: boolean;
+  sinComentarios: boolean;
 
-  constructor(private socialService: SocialService) { }
+  constructor(
+    private socialService: SocialService,
+    private usuariosService: UsuariosService
+  ) { }
 
   ngOnInit() {
 
@@ -20,18 +26,14 @@ export class SocialComponent implements OnInit {
 
     this.socialService.getPelicuasVistas(this.token)
       .then(res => {
-        this.peliculasVistas = res
-      })
-      .catch(err => console.log(err));
+        this.peliculasVistas = res;
+        if (res.length === 0) { this.sinAmigos = true; }
+      });
 
-    this.socialService.getUltimosMensajes(this.token)
+    this.socialService.getUltimosMensajes(this.token, 'social')
       .then(res => {
-        this.ultimosMensajes = res
+        this.ultimosMensajes = res;
+        if (res.length === 0) { this.sinComentarios = true; }
       })
-      .catch(err => console.log(err));
-
-
-
   }
-
-}
+} 

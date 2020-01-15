@@ -1,41 +1,30 @@
 <div class="p-5">
     <form class="form-group col-6" [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
-        <h3 class="mb-5">Username</h3>
-        <div class="pl-4">
+        <div class="form-group">
+            <h4 class="mb-4">Renueva tu avatar y tu cita</h4>
 
-            <div class="form-group">
-                <input placeholder="Antiguo password" type="password" class="form-control" formControlName="password">
+            <div>
+                <img *ngIf="!avatarSeleccionado" class="img-fluid rounded-circle pb-3"
+                    src="../../assets/avatares/{{arrUsuario?.avatar}}.jpg">
+                <img *ngIf="avatarSeleccionado" class="img-fluid rounded-circle pb-3"
+                    src="../../assets/avatares/{{avatarSeleccionado}}.jpg">
             </div>
-
             <div class="form-group">
-                <input placeholder="Nuevo password" type="password" class="form-control" formControlName="password">
-            </div>
-
-            <div class="form-group">
-                <input placeholder="Confirmar password" type="password" class="form-control"
-                    formControlName="rPassword">
-            </div>
-
-            <div class="form-group">
-                <label>Avatar</label>
-                <select type="checkbox" class="form-control cb" formControlName="avatar">
-                    <option value="avatar1">Avatar 1</option>
-                    <option value="avatar2">Avatar 2</option>
-                    <option value="avatar3">Avatar 3</option>
-                    <option value="avatar4">Avatar 4</option>
-                    <option value="avatar5">Avatar 5</option>
-                    <option value="avatar6">Avatar 6</option>
-                    <option value="avatar7">Avatar 7</option>
-                    <option value="avatar8">Avatar 8</option>
+                <select type="checkbox" class="form-control cb" formControlName="avatar"
+                    (change)="onChange($event.target.value)">
+                    <option [value]="avatar?.id" [selected]="arrUsuario?.avatar == avatar?.id"
+                        *ngFor="let avatar of arrAvatares">{{avatar.personaje}} -
+                        <span class="font-italic">{{avatar.pelicula}}</span></option>
                 </select>
             </div>
 
             <div class="form-group">
-                <input placeholder="Cita" type="input" class="form-control cb" formControlName="cita">
+                <input placeholder="Cita" type="input" class="form-control cb" formControlName="cita"
+                    [value]="arrUsuario?.cita">
             </div>
 
-            <input type="submit" class="btn btn-light" value="Enviar" [disabled]="formulario.invalid">
+            <input type="submit" class="btn btn-light" value="Cambiar" [disabled]="formulario.invalid">
         </div>
     </form>
 </div>

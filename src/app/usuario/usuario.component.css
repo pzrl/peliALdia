@@ -1,5 +1,7 @@
 .principal {
     background-color: rgba(0, 80, 76, 0.5);
+    min-height: 100vh;
+    overflow: auto;
 }
 .usuario {
     border-radius: 5px;
@@ -7,16 +9,123 @@
     height: auto;
     background-color: rgb(31, 97, 94);
 }
-.img-fluid {
-    width: 150px;
-    margin-bottom: 20px;
+
+.cita {
+    font-style: italic;
+    font-family: 'ProximaNova-Thin';
+}
+.puntuaciones h2 {
+    margin-bottom: -5px;
+}
+.valoracion {
+    margin-top: -10px;
+    font-size: 80%;
 }
 button {
-    border: none
+    padding-left: 0;
+    font-size: 80%;
+    border: none;
+    background-color: rgb(31, 97, 94);
 }
 button:hover {
     color: white;
 }
-button:focus {
-    outline: none;
+
+.botonera {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 150px;
+}
+
+input {
+    background-color: rgb(31, 97, 94);
+    border: none;  
+    font-size: 20px;
+    border-radius: 2px;
+}
+input:hover {
+    color: white;
+}
+.inactivo {
+    background-color: rgb(0, 80, 76);
+}
+.avatarAmigos {
+    width:100px;
+}
+
+
+.card {
+    border: none;
+    background-color: rgb(31, 97, 94);
+    max-width: 100%;
+}
+
+.ficha {
+    height: 260px;
+    overflow: hidden;
+}
+.poster img {
+    width: 150px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.descripcion {
+    height: 235 px;
+    overflow: hidden;
+    text-overflow: fade;
+}
+.info {
+    font-family: 'ProximaNova-Thin';
+    line-height : 1.25;
+    letter-spacing: 1px;
+}
+.titulovista {
+    margin-bottom: -5px;
+}
+.puntuacion p, valoracio p{
+    font-size: 80%;    
+}
+
+.cargarMas {
+    padding: 4px;
+    width: 100%;
+    background-color: rgb(31, 97, 94);
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.mensajeBlock {
+    position: fixed;
+}
+
+
+@media (max-width: 950px) {
+        
+    h2 {
+        font-size: 180%;
+    }
+
+    p {
+        font-size: 82%;
+    }
+
+    .puntuacion p {
+        font-size: 10.5px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .fotoPerfil {
+        width: 40%;
+        margin: 10px auto;
+    }
+    .usuario .card-body {
+        text-align: center;
+    }
+    .puntuaciones {
+        text-align: center;
+    }
+
+
 }

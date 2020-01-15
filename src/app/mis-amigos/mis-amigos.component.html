@@ -1,22 +1,84 @@
-<div class="amigos">
-    <h5>Mis amigos</h5>
-    <div class="card my-3" style="max-width: 100%;" *ngFor="let amigo of arrAmigos">
-        <div class="row no-gutters p-3" max-height="200px">
+<div class="botonera">
+    <input id="btnAmigos" type="submit" value="Amigos" (click)="onClickA()">
+    <input id="btnMensajes" class="inactivo" type="submit" value="Mensajes" (click)="onClickM()">
+    <input id="btnBloqueados" class="inactivo" type="submit" value="Bloqueados" (click)="onClickB()">
+</div>
 
-            <div class="col-2">
-                <a [routerLink]="['/usuario/', amigo.id]">
-                    <img [src]="'../../assets/avatares/' + amigo.avatar + '.jpg'" class="img-fluid rounded-circle"
-                        width="100px">
+<div class="amigos mt-5" *ngIf="amigos">
+    <div class="mb-4" *ngIf="sinAmigos">
+        <p>Todavía no sigues ha ningún usuario. ¡Búsca a tus amigos!</p>
+    </div>
+    <div [id]="amigo.id" class="card my-3" *ngFor="let amigo of arrAmigos">
+        <div class="row no-gutters p-3">
+
+            <div class="col-1">
+                <a [routerLink]="['/in/usuario/', amigo.id]">
+                    <img [src]="'../../assets/avatares/' + amigo.avatar + '.jpg'" class="img-fluid rounded-circle">
                 </a>
             </div>
 
-            <div class="col-10">
+            <div class="col-11">
                 <div class="card-body">
-                    <h5 class="card-title"><a [routerLink]="['/amigo/', amigo.id]">{{ amigo.usuario }}</a>
+                    <h5 class="card-title"><a [routerLink]="['/in/usuario/', amigo.id]">{{ amigo.usuario }}</a>
                     </h5>
-                    <p class="card-text">{{ amigo.cita }}</p>
+                    <p class="cita card-text d-inline-block mb-0">{{ amigo.cita }}</p>
+                    <button class="d-block pl-0" [value]="amigo.id" (click)="onClickFollow($event.target.value)">DEJAR
+                        DE
+                        SEGUIR</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div class="mensajes pt-5" *ngIf="mensajes">
+    <div class="mt-4" *ngIf="sinMensajes">
+        <p class="aviso info">No has recibido ningún mensaje.
+        </p>
+    </div>
+
+    <div class="mb-1" *ngFor="let mensaje of arrMensajesMostrados">
+        <div class="row no-gutters">
+            <div class="col-1 d-inline-block text-center pt-1">
+                <a [routerLink]="['/in/usuario/', mensaje?.fk_usuario]" [title]="mensaje?.autor" class="fotoMensaje">
+                    <img src="../../assets/avatares/{{mensaje?.avatar}}.jpg" class="img-fluid rounded-circle perfil">
+                    <img *ngIf="mensaje?.nuevo" src="../../assets/icons/nuevo(1).png" class="nuevo">
+                </a>
+            </div>
+            <div class="col-11 pl-0 d-inline-block">
+                <div class="card-body">
+                    <a class="d-inline-block"
+                        [routerLink]="['/in/usuario/', mensaje?.fk_usuario]">{{mensaje?.autor}}</a>
+                    <p class="d-inline-block fecha">{{mensaje?.fecha}}</p>
+                    <a class="d-block mensaje"
+                        [routerLink]="['/in/usuario/', mensaje?.fk_usuario]">{{mensaje?.post}}</a>
                 </div>
             </div>
         </div>
     </div>
+    <button class="cargarMas" (click)="cargarMas()" *ngIf="mensajesMostradosIncompleto">...</button>
+</div>
+
+<div class="mt-5" *ngIf="bloqueados">
+    <div [id]="bloqueado.id" class="card mb-4" style="max-width: 100%;" *ngFor="let bloqueado of arrBloqueados">
+        <div class="row no-gutters p-3" max-height="200px">
+
+            <div class="col-1">
+                <img [src]="'../../assets/avatares/' + bloqueado.avatar + '.jpg'" class="img-fluid rounded-circle"
+                    width="100px">
+            </div>
+
+            <div class="col-11">
+                <div class="card-body">
+                    <h4 class="card-title">{{ bloqueado.usuario }}</h4>
+                    <button class="p-0" (click)="onClickBlock($event.target)" [id]="bloqueado.id"
+                        value="0">DESBLOQUEAR</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>

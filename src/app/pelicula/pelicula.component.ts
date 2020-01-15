@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PeliculasService } from '../services/peliculas.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-pelicula',
@@ -12,8 +13,13 @@ export class PeliculaComponent implements OnInit {
   idPelicula: number;
   pelicula: any;
   token: string;
+
+  datosPeliUsuario: any;
+
+  datosPelicula: any;
   puntuacion: any;
   pendiente: boolean;
+  subscripcion: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -23,22 +29,34 @@ export class PeliculaComponent implements OnInit {
 
   async ngOnInit() {
     this.token = localStorage.getItem('token_peliALdia');
-    this.idPelicula = this.activatedRoute.params['_value'].idItem;
 
-    await this.peliculasService.getPelicula(this.idPelicula)
-      .then(res => this.pelicula = res)
-      .catch(err => console.log(err));
+    this.subscripcion = this.activatedRoute.params.subscribe(async (params) => {
+      this.idPelicula = params.idItem;
 
-    await this.peliculasService.getDatosPeliUsuario(this.idPelicula, this.token)
-      .then(res => {
-        console.log('los datos del init', res)
-        this.puntuacion = res[0].puntuacion;
-        if (res[0].pendiente === 0) {
-          this.pendiente = false;
-        } else {
-          this.pendiente = true;
-        }
-      });
+      // FICHA PELÍCULA
+      this.pelicula = await this.peliculasService.getPelicula(this.idPelicula);
+      if (this.pelicula == null) {
+        this.router.navigateByUrl('/in/error404');
+      }
+
+      // DATOS PELÍCULA
+      this.datosPelicula = await this.peliculasService.getDatosPelicula(this.idPelicula);
+      if (this.datosPelicula.puntuacion === 'NaN') {
+        this.datosPelicula.puntuacion = null;
+      }
+      if (this.datosPelicula.numeroPuntuaciones === 'NaN') {
+        this.datosPelicula.numeroPuntuaciones = 0;
+      }
+
+      // RELACION PELÍCULA USUARIO
+      this.datosPeliUsuario = await this.peliculasService.getDatosPeliUsuario(this.idPelicula, this.token)
+      this.puntuacion = this.datosPeliUsuario[0].puntuacion;
+      if (this.datosPeliUsuario[0].pendiente === 0) {
+        this.pendiente = false;
+      } else {
+        this.pendiente = true;
+      }
+    });
   }
 
   onChange(pNota) {
@@ -46,14 +64,8 @@ export class PeliculaComponent implements OnInit {
       idUsuario: this.token,
       idPelicula: this.idPelicula,
       puntuacion: pNota
-    }
+    };
     this.peliculasService.puntuarPelicula(datosPunt)
-      .then(res => {
-        console.log('Nota cambiada', res);
-      })
-      .catch(err => {
-        console.log('Error en component', err);
-      });
   }
 
   onClick(pPendiente) {
@@ -62,19 +74,13 @@ export class PeliculaComponent implements OnInit {
       idUsuario: this.token,
       pendiente: pPendiente
     };
+    if (pPendiente == 0) {
+      this.pendiente = false;
+    } else {
+      this.pendiente = true;
+    }
     this.peliculasService.marcarPelicula(peliculaPendiente)
-      .then(res => {
-        if (pPendiente === 0) {
-          this.pendiente = false;
-        } else {
-          this.pendiente = true;
-        }
-        this.router.navigateByUrl('/', { skipLocationChange: true })
-          .then(() => this.router.navigate(['pelicula/' + this.idPelicula]));
-      })
-      .catch(err => {
-        console.log('Error en component', err);
-      });
   }
+
 }
 

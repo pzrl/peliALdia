@@ -1,45 +1,59 @@
-<div class="princial p-4">
+<div class="principal p-4">
 
     <!-- FICHA PELICULA --------------------------------------------- -->
 
     <div class="pelicula mb-3 pt-3">
-        <div class=" row no-gutters p-4">
-            <div class="col-md-2">
-                <img [src]="pelicula.imagen" class="foto img-fluid">
-            </div>
-            <div class="col-md-10 pl-3">
-                <div class="card-body pt-0">
-                    <h2 class="card-title"> {{ pelicula.titulo }} </h2>
-                    <p class="card-text">Año: {{ pelicula.anio }}</p>
-                    <p class="card-text">Duración: {{ pelicula.duracion }}</p>
-                    <p class="card-text">Director: {{ pelicula.director }}</p>
-                    <p class="card-text">Reparto: {{ pelicula.reparto }}</p>
-                    <p class="card-text">Sinopsis: {{ pelicula.sinopsis }}</p>
+        <div class="row no-gutters p-4">
+            <div class="col-sm-12 col-md-2 contFoto">
+                <img src="http://localhost:3000/images/{{ pelicula?.id }}.jpg" class="foto img-fluid">
 
-                    <div class="puntuar">
-                        <select name="" id="" (change)="onChange($event.target.value)">
-                            <option value="NULL" active></option>
-                            <option value="1" [selected]="puntuacion === 1">1</option>
-                            <option value="2" [selected]="puntuacion === 2">2</option>
-                            <option value="3" [selected]="puntuacion === 3">3</option>
-                            <option value="4" [selected]="puntuacion === 4">4</option>
-                            <option value="5" [selected]="puntuacion === 5">5</option>
-                        </select>
-                        <p>valoración</p>
-                    </div>
-                    <div class="pendientes">
-                        <p>
-                            <button *ngIf="!pendiente" (click)="onClick($event.target.value)" value="1">Añadir a pelis
-                                pendientes</button>
-                            <button *ngIf="pendiente" (click)="onClick($event.target.value)" value="0">Quitar de pelis
-                                pendientes</button>
-                        </p>
+            </div>
+            <div class="col-sm-12 col-md-10 pl-3">
+
+                <div class="card-body pt-0">
+                    <h1 class="card-title"> {{ pelicula?.titulo }} </h1>
+
+                    <div class="subtitulo">
+                        <div class="d-inline-block notasSelect">
+                            <select class=" d-inline-block" (change)="onChange($event.target.value)">
+                                <option value="NULL" active></option>
+                                <option value="1" [selected]="puntuacion === 1">1</option>
+                                <option value="2" [selected]="puntuacion === 2">2</option>
+                                <option value="3" [selected]="puntuacion === 3">3</option>
+                                <option value="4" [selected]="puntuacion === 4">4</option>
+                                <option value="5" [selected]="puntuacion === 5">5</option>
+                            </select>
+                            <p class="d-inline-block">MI VALORACIÓN</p>
+                        </div>
+                        <div class="d-inline-block notas">
+                            <h4 class="d-inline-block text-center">{{datosPelicula?.puntuacion || '-'}}</h4> <img
+                                src="../../assets/icons/" alt="">
+                            <p class="ml-2 d-inline-block">VALORACIÓN MEDIA</p>
+                        </div>
+                        <div class="d-inline-block notas2">
+                            <h4 class="text-center d-inline-block">{{datosPelicula?.numeroPuntuaciones || '-'}}</h4>
+                            <p class="ml-2 d-inline-block">NUMERO VALORACIONES</p>
+                        </div>
+                        <div class="d-inline-block pendientes">
+                            <p>
+                                <button *ngIf="!pendiente" (click)="onClick($event.target.value)" value="1">AÑADIR A
+                                    PELÍCULAS PENDIENTES</button>
+                                <button *ngIf="pendiente" (click)="onClick($event.target.value)" value="0">QUITAR DE
+                                    PELÍCULAS PENDIENTES</button>
+                            </p>
+                        </div>
+
+                        <p class="info pt-2 mb-2">Año: {{ pelicula?.anio }}</p>
+                        <p class="info mb-2 ">Director: {{ pelicula?.director }}</p>
+                        <p class="info mb-2">Reparto: {{ pelicula?.reparto }}</p>
+                        <p class="info">Sinopsis: {{ pelicula?.sinopsis }}</p>
+
                     </div>
                 </div>
             </div>
         </div>
+
+        <h6 class="ml-3 mt-5">COMENTARIOS</h6>
+        <app-chat></app-chat>
+
     </div>
-
-    <app-chat></app-chat>
-
-</div>

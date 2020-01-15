@@ -1,12 +1,31 @@
-<div class="container pt-5">
-    <h5>Chat</h5>
-    <div class="conversaciones my-5 p-4" *ngFor="let post of arrPosts">
-        <p class="post">{{post.post}}</p>
-        <p class="autor">{{post.autor}}</p>
-        <p class="fecha">{{post.fecha}}</p>
+<div class="container pt-1">
+    <div class="conversaciones mt-4 pt-4" *ngFor="let post of arrPosts">
+
+        <p class="postEditado m-0" *ngIf="'editado' == post?.clase">Editado</p>
+
+        <p [class]="post?.clase">{{post?.post}}</p>
+
+        <div class="pie">
+            <a class="firma" [routerLink]="['/in/usuario/', post?.fk_usuario]">
+                <p class="autor">{{post?.autor}}</p>
+                <img src="../../assets/avatares/{{post?.avatar}}.jpg" class="img-fluid rounded-circle">
+            </a>
+            <p class="fecha">{{post?.fecha}}</p>
+
+            <input *ngIf="editable === post?.fk_usuario" [class]="post?.clase" (click)="onEdit(post?.post, post?.id)"
+                value="EDITAR">
+            <input *ngIf="editable === post?.fk_usuario" [class]="post?.clase" (click)="onDelete(post?.id)"
+                value="ELIMINAR">
+        </div>
     </div>
-    <form [formGroup]="formulario" (ngSubmit)="onSubmit(formulario.post)">
-        <textarea class="col-12" rows="4" formControlName="post"></textarea>
-        <input type="submit" class="btn btn-outline-light" value="Enviar" [disabled]="formulario.invalid">
+
+    <form id="formulario" [formGroup]="formulario" (ngSubmit)="onSubmit(formulario.post)">
+        <textarea class="col-12" rows="4" formControlName="post" [(ngModel)]="textoAEditar"></textarea>
+
+        <input type="submit" class="btn mt-2" value="PUBLICAR" [disabled]="formulario.invalid" *ngIf="!edicion">
+        <input class="btn mt-2" value="CONFIRMAR CAMBIOS" [disabled]="formulario.invalid" *ngIf="edicion"
+            (click)="onConfrimEdit(formulario.value.post)">
+        <input class="btn mt-2" value="CANCELAR" [disabled]="formulario.invalid" *ngIf="edicion"
+            (click)="onCancelEdit()">
     </form>
 </div>

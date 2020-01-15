@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
 
+  arrAvatares: any;
+  avatarSeleccionado: string;
   formulario: FormGroup;
   alertaCampos: {};
 
@@ -39,38 +41,35 @@ export class RegistroComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.arrAvatares = await this.usuariosService.getAvatares();
   }
 
   onSubmit() {
-    console.log(this.formulario.value)
     this.usuariosService.guardarUsuario(this.formulario.value)
       .then((check) => {
-        console.log('hola desde el component', check);
         if (check.user === false && check.email === false) {
           this.router.navigateByUrl('/login');
         }
         this.alertaCampos = check;
-      }).catch((err) => {
-        console.log(err);
       });
   }
 
   passwordValidator(form: FormGroup) {
-
     const passwordControl = form.controls['password'];
     const rPasswordControl = form.controls['rPassword'];
 
-    console.log('cotrol password', passwordControl, rPasswordControl)
-
     if (passwordControl.value === rPasswordControl.value) {
       return null;
-    } else {
+    }
+    else {
       return { passwordvalidator: true };
     }
   }
 
-
+  onChange(pAvatar) {
+    this.avatarSeleccionado = pAvatar;
+  }
 
 
 }

@@ -9,6 +9,7 @@ import { CinesService } from '../services/cines.service';
 export class MisCinesComponent implements OnInit {
 
   token: string;
+  sinFavoritos: boolean;
   arrCines: [];
 
   constructor(private cinesService: CinesService) { }
@@ -16,14 +17,26 @@ export class MisCinesComponent implements OnInit {
   async ngOnInit() {
     this.token = localStorage.token_peliALdia;
 
-    await this.cinesService.getCinesFavoritos(this.token)
+    this.arrCines = await this.cinesService.getCinesFavoritos(this.token)
+    if (this.arrCines.length === 0) {
+      this.sinFavoritos = true;
+    }
+    else {
+      this.sinFavoritos = false;
+    }
+  }
+
+  onClick(pId) {
+    const cineFavorito = {
+      idCine: pId,
+      idUsuario: this.token,
+      favorito: 0
+    };
+    this.cinesService.marcarCine(cineFavorito)
       .then(res => {
-        console.log('los datos de miscines ts', res);
-        this.arrCines = res;
-      })
-      .catch(err => {
-        console.log('fukin error', err);
+        document.getElementById(pId).style.display = 'none';
       });
+
   }
 
 }

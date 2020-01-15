@@ -21,13 +21,16 @@ export class SocialService {
     return this.http.get<any[]>(this.baseUrl + 'seenMovies', httpOptions).toPromise();
   }
 
-  getUltimosMensajes(pToken): Promise<any[]> {
+  getUltimosMensajes(pToken, pComponente): Promise<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         usertoken: pToken
       })
     }
-    return this.http.get<any[]>(this.baseUrl + 'lastMessages', httpOptions).toPromise();
+    const body = {
+      componente: pComponente
+    };
+    return this.http.post(this.baseUrl + 'lastMessages', body, httpOptions).toPromise();
   }
 
 

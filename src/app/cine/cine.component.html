@@ -1,98 +1,65 @@
-<div class="principal p-4">
+<div class="principal">
 
     <!-- FICHA CINE --------------------------------------------- -->
 
-    <div class="cine mb-3 p-4">
-        <div class="col-md-11">
+    <div class="cine">
+        <div class="d-inline-block">
             <div>
-                <h2 class="card-title"> {{ cine[0]?.nombre }} </h2>
-                <p class="card-text">{{ cine[0]?.direccion }}</p>
-                <a [routerLink]="cine[0].web" class="card-text  d-inline mr-5">{{ cine[0]?.web }}</a>
-                <a href="" class="card-text d-inline  mr-5">{{ cine[0]?.telefono }}</a>
+                <h1 class="card-title"> {{ cine[0]?.nombre }} </h1>
+                <div class="subtitulo">
+                    <select class="d-inline-block" (change)="onChange($event.target.value)">
+                        <option value="NULL" active></option>
+                        <option value="1" [selected]="puntuacion === 1">1</option>
+                        <option value="2" [selected]="puntuacion === 2">2</option>
+                        <option value="3" [selected]="puntuacion === 3">3</option>
+                        <option value="4" [selected]="puntuacion === 4">4</option>
+                        <option value="5" [selected]="puntuacion === 5">5</option>
+                    </select>
+                    <p class="d-inline-block mr-4 mb-0">MI VALORACIÓN</p>
+                    <p class="d-inline-block mr-4  mb-0"><span class="mr-2">{{datosCine?.puntuacion || '-'}}</span>
+                        VALORACIÓN
+                        MEDIA</p>
+                    <p class="d-inline-block mr-4  mb-0"><span class="mr-2">{{datosCine?.numeroPuntuaciones}}
+                        </span>VALORACIONES</p>
+                    <button class="d-inline-block" *ngIf="!favorito" (click)="onClick($event.target.value)"
+                        value="1">FAVORITO</button>
+                    <button class="d-inline-block" *ngIf="favorito" (click)="onClick($event.target.value)"
+                        value="0">QUITAR DE
+                        FAVORITOS</button>
+                </div>
             </div>
+
+            <p class="info mt-3 mb-0">{{ cine[0]?.direccion }} - {{ cine[0]?.ciudad }}</p>
+            <a [href]="cine[0]?.web" class="info">{{ cine[0]?.web }}</a>
         </div>
-        <div class="favorito">
-
-            <button *ngIf="!favorito" (click)="onClick($event.target.value)" value="1">Favorito</button>
-            <button *ngIf="favorito" (click)="onClick($event.target.value)" value="0">Quitar de favoritos</button>
-
-        </div>
-
     </div>
+
+    <input class="" id="btnCartelera" type="submit" value="Cartelera" (click)="onClickC()">
+    <input class="inactivo" id="btnOpiniones" type="submit" value="Opiniones" (click)="onClickO()">
 
     <!-- FICHAS PELICULAS PROYECTADAS ------------------------------ -->
-    <div class="peliculas p-1">
-
-
-        <div class="pelicula mb-3">
-            <div class="row no-gutters p-3 col-md-11">
-                <div class="col-md-4 mr-4">
-                    <img src="https://a.ltrbxd.com/resized/film-poster/2/9/1/4/1/9/291419-ford-v-ferrari-0-460-0-690-crop.jpg?k=3ac9a160ad"
-                        class="foto img-fluid">
+    <div *ngIf="cartelera" class="cartelera">
+        <div class="peliculas p-2">
+            <div class="pelicula mb-3 p-2" *ngFor="let pelicula of arrPeliculas">
+                <div class="">
+                    <a [routerLink]="['/in/pelicula/', pelicula?.id]"><img
+                            src="http://localhost:3000/images/{{pelicula?.id}}.jpg" class="foto img-fluid"></a>
                 </div>
-                <div class="col-md-7">
-                    <div>
-                        <h4>Frod vs. Ferrari</h4>
-                        <div class="float-left mr-4">
-                            <div class="sesion"><a href="">16:00</a></div>
-                            <div class="sesion"><a href="">19:00</a></div>
+                <div class="sesiones">
+                    <h4><a [routerLink]="['/in/pelicula/', pelicula.id]">{{pelicula?.titulo}}</a></h4>
+                    <p>Sesiones</p>
+                    <div class="sesion">
+                        <div *ngFor="let hora of pelicula?.horarios" class="hora">
+                            <a href="{{hora?.link}}" target="_blank">{{hora?.horario}}</a>
                         </div>
-                        <div class="float-left mr-4">
-                            <div class="sesion"><a href="">22:00</a></div>
-                        </div>
-
                     </div>
+
                 </div>
             </div>
         </div>
-
-        <div class="pelicula mb-3">
-            <div class="row no-gutters p-3">
-                <div class="col-md-4  mr-4">
-                    <img src="http://es.web.img3.acsta.net/c_215_290/pictures/19/08/22/20/01/2916985.jpg"
-                        class="img-fluid foto">
-                </div>
-                <div class="col-md-7">
-                    <div>
-                        <h4>Madre</h4>
-                        <div class="float-left mr-4">
-                            <div class="sesion"><a href="">16:00</a></div>
-                            <div class="sesion"><a href="">18:00</a></div>
-                        </div>
-                        <div class="float-left mr-4">
-                            <div class="sesion"><a href="">20:00</a></div>
-                            <div class="sesion"><a href="">22:00</a></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="pelicula mb-3">
-            <div class="row no-gutters p-3">
-                <div class="col-md-4 mr-4">
-                    <img src="https://a.ltrbxd.com/resized/film-poster/4/0/6/7/7/5/406775-joker-0-460-0-690-crop.jpg?k=72dcdc129a"
-                        class="img-fluid foto">
-                </div>
-                <div class="col-md-7">
-                    <div>
-                        <h4>Joker</h4>
-                        <div class="float-left mr-4">
-                            <div class="sesion"><a href="">16:00</a></div>
-                            <div class="sesion"><a href="">18:00</a></div>
-                        </div>
-                        <div class="float-left mr-4">
-                            <div class="sesion"><a href="">20:00</a></div>
-                            <div class="sesion"><a href="">22:00</a></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
+    <!-- CHAT ------------------------------ -->
 
-    <app-chat></app-chat>
-</div>
+    <div *ngIf="opiniones" class="opiniones">
+        <app-chat></app-chat>
+    </div>

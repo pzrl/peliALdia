@@ -1,20 +1,42 @@
+.social {
+    padding-left: 3px;
+}
+section {
+    height: 320px;
+}
+.info {
+    font-family: 'ProximaNova-Thin';
+    line-height : 1.25;
+}
+
 ul {
     list-style: none;
     padding-left: 22px;
     padding-bottom: 15px;
     margin-top: -10px;
+    padding-right: 10px;
+    width: 235px;
+    overflow: hidden;
 }
 li {
-    text-overflow: ellipsis;
     white-space: nowrap;
     text-overflow: ellipsis;
     margin-bottom: 4px;
 }
 .foto, a {
+    font-family: 'ProximaNova-Thin';
     display: inline-block;
+    position: relative;
 }
 img {
     width: 25px;
+}
+.nuevo {
+    width: 22px;
+    position: absolute;
+    left: -4px;
+    transform: rotate(270deg);
+    z-index: 100;
 }
 a {
     font-size: 80%;
@@ -22,8 +44,17 @@ a {
 p {
     padding-left: 20px;
 }
-
-
 button:focus {
     outline: none;
+}
+.logo {
+    text-align: center;
+}
+.logo img {
+    padding-top: 40px;
+    width: 150px;
+    margin: 0 auto;
+}
+.aviso {
+    font-size: 15px;
 }

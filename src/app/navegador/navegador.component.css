@@ -1,11 +1,19 @@
 nav {
     background-color: rgb(0, 80, 76);
     width: 100%;
+    height: 50px;
+    padding-top: 5px;
 }
 .logo {
+    position: fixed;
     width: 250px;
-    float:left;
     text-align: center;
+}
+.logo button {
+    display: none;
+}
+.logo img {
+    width: 150px;
 }
 .navbar-brand, span {
     font-size: 20px;
@@ -13,6 +21,11 @@ nav {
 }
 .navegador {   
     width: 100%;
+    padding: 0 250px;
+    display: inline-block;
+}
+.navegador > a {
+    display: none;
 }
 a span {
     font-style: italic;
@@ -21,12 +34,18 @@ a span {
     display: inline-block;  
 }
 .links {
-    width: 350px;
+    width: 300px;
+}
+.navegador > button {
+    display: none;
 }
 .search {
     float: right;
-    margin-right: 130px;
+    margin-right: 25px;
     margin-top: 8px;
+}
+.buscador {
+    color:rgb(0, 80, 76);
 }
 
 input, form button, select {
@@ -34,9 +53,6 @@ input, form button, select {
     background-color: rgb(0, 80, 76);
     border: 1px solid rgb(212, 245, 244);
     color:rgb(212, 245, 244);
-}
-button:focus {
-    outline: none;
 }
 form input {
     height: 25px;
@@ -57,35 +73,161 @@ form button {
     background-color: transparent;
     background-position : center;
     background-image: url('../../assets/icons/lupita.png');
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     background-size: 70% 70%;
 }
-.dropdown {
-    float: right;
+.perfil {     
+    width: 250px;
     margin-top: 8px;
-    margin-right: 20px;
+    padding-left: 8px;
+    position: fixed;
+    right: 0;
 }
-.dropdown button {
-    padding-right: 80px;
+.perfil .desplegable {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+}
+.desplegable p {
+    display: inline;
+}
+.desplegable p:hover {
+    color: white;
 }
 .dropdown-contenido ul {
+    position: absolute;
     list-style: none;
     width: 110px;
-    margin: 0px;
+    margin-right: 0px;
     margin-top: 5px;
     padding: 0px;
     background-color: rgb(0, 80, 76);
 }
 .dropdown-contenido li {
-border: 1px solid rgb(212, 245, 244);
-padding-left: 4px;
-padding-top: 2px;
-padding-bottom: 2px;
+    border: 1px solid rgb(212, 245, 244);
+    padding-left: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
-
+.dropdown-contenido li:last-child {
+    margin-top: -1px;
+}
 .oculto {
     display: none;
 }
 .dropdown-contenido a {
     font-size: 80%;
+}
+
+
+@media (max-width: 1000px) {
+
+    nav {
+        padding-top: 12px;
+    }
+    
+    .logo {
+        width: 150px;
+    }
+    .logo img {
+        width: 100px;
+    }
+    .navegador {
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+    .links {
+        width: 260px;
+    }
+    .navegador a {
+        font-size: 12.5px;
+    }
+    li {
+        padding-left: 0px;
+    }
+    form input {
+        width: 80px;
+        height: 17px;
+        font-size: 12px;
+    }
+    form button {
+        width: 17px;
+        height: 17px;
+        background-size: 70% 70%;
+    }
+    .perfil {
+        width: 150px;
+        margin-top: -30px; 
+        margin-right: 0; 
+        display: block;
+    }
+
+    @media (max-width: 400px) {
+
+        .logo {
+            width: 115px;
+            text-align: left;
+            margin-left: 20px;
+        }
+        .logo > a {
+            display: none;
+        }
+        
+        .logo button {
+            font-size: 12px;
+            display: inline-block;
+        }
+        .logo button img {
+            width: 18px;
+        }
+        .logo .dropdown-contenido ul {
+            width: 110px;
+            margin-left: -19px;
+            margin-top: 8px;
+        }
+        .logo li {
+            height: 30px;
+            width: 110px;
+        }
+        .navegador {
+            padding-left: 115px;
+            padding-right: 115px;
+            text-align: center;
+        }
+        .navegador > a {
+            display: inline-block;
+            margin: 0 auto;
+        }
+        .navegador > a > img {
+            width: 80%;
+        }
+        .navegador .links, .navegador .search {
+            display: none;
+        }
+        form input {
+            width: 60px;
+            height: 15px;
+            float: left
+        }
+        form button {
+            width: 15px;
+            height: 15px;
+            background-size: 50% 50%;
+        }
+        .perfil {
+            width: 115px;
+        }
+        .desplegable button {
+            float: right;
+            margin-right: 20px;
+        }
+        .desplegable p {
+            display: none;
+        }
+        .desplegable .dropdown-contenido ul {
+            margin-top: 30px;
+            margin-left: 0px;
+            right: 1px;
+        }
+    }
 }

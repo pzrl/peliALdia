@@ -1,12 +1,65 @@
-button:focus {
-    outline: none;
-}
+
 .card {
-    background-color: rgb(0, 80, 76);
+    background-color: rgb(31, 97, 94);
 }
-img {
-    width: 100px;
+.row {
+    display: flex;
+}
+.foto {
+    width: 130px;
+}
+.info {
+    flex: 1;
+}
+.info2 {
+    font-family: 'ProximaNova-Thin';
+    line-height : 1.25;
+    letter-spacing: 1px;
+}
+.cita {
+    font-family: 'ProximaNova-Thin';
+    line-height : 1.25;
+    letter-spacing: 1px;
+    font-style: italic;
 }
 .pelicula {
+    border: none;
     border-radius: 5px;   
+}
+.botonera button {
+    margin-right: 20px;
+    background-color: rgb(31, 97, 94);
+    border: none;  
+    font-size: 20px;
+    border-radius: 2px;
+}
+button span {
+    font-family: 'ProximaNova-Thin';
+    font-size: 14px;
+    line-height : 1.25;
+    letter-spacing: 1px;
+}
+.botonera .inactivo {
+    background-color: rgb(0, 80, 76);
+}
+p {
+    font-family: 'ProximaNova-Thin';
+    line-height : 1.25;
+    letter-spacing: 1px;
+}
+.cargarMas {
+    padding: 4px;
+    width: 100%;
+    background-color: rgb(31, 97, 94);
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+
+@media (max-width: 950px) {
+        
+    p {
+        font-size: 80%;
+    }
+
 }

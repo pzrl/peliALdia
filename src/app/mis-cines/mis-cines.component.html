@@ -1,12 +1,33 @@
 <div class="cines">
-    <h5>Mis cines</h5>
-    <div class="card my-3" style="max-width: 100%;" *ngFor="let cine of arrCines">
-        <div class="row no-gutters p-3" max-height="200px">
-
-            <div class="col-10">
+    <div class="botonera">
+        <input value="Cines favoritos">
+    </div>
+    <div class="mt-5" *ngIf="sinFavoritos">
+        <p>Agrega tus cines favoritos para acceder a ellos con más facilidad y para poder ver su cartelera desde la
+            página principal.
+        </p>
+    </div>
+    <div class="mt-5">
+        <div [id]="cine?.id" class="card mb-4" style="max-width: 100%;" *ngFor="let cine of arrCines">
+            <div class="row no-gutters p-3" max-height="200px">
                 <div class="card-body">
-                    <h5 class="card-title"><a [routerLink]="['/cine/', cine.id ]">{{ cine.nombre }}</a></h5>
-                    <p class="card-text">{{ cine.direccion }}</p>
+                    <h4 class="card-title"><a [routerLink]="['/in/cine/', cine.id ]">{{ cine?.nombre }}</a></h4>
+                    <div class="valoracion">
+                        <select class="d-inline-block" (change)="onChange($event.target.value)">
+                            <option value="NULL" active></option>
+                            <option value="1" [selected]="cine?.puntuacion === 1">1</option>
+                            <option value="2" [selected]="cine?.puntuacion === 2">2</option>
+                            <option value="3" [selected]="cine?.puntuacion === 3">3</option>
+                            <option value="4" [selected]="cine?.puntuacion === 4">4</option>
+                            <option value="5" [selected]="cine?.puntuacion === 5">5</option>
+                        </select>
+                        <p class="d-inline-block mr-3">MI VALORACIÓN</p>
+                        <button class="d-inline-block" (click)="onClick($event.target.value)" [value]="cine?.id">QUITAR
+                            DE
+                            FAVORITOS</button>
+                    </div>
+                    <p class="info mb-0">{{ cine?.direccion }} - {{ cine?.ciudad }}</p>
+                    <a class="link" [href]="cine?.web">{{cine?.web}}</a>
                 </div>
             </div>
         </div>

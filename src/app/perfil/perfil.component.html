@@ -1,4 +1,4 @@
-<aside class="p-4 text-center">
+<aside class="pt-5 px-4 text-center">
     <div class="mb-3">
         <a [routerLink]="['editarPerfil']">
             <img src="../../assets/avatares/{{arrUsuario?.avatar}}.jpg" class="img-fluid rounded-circle">
@@ -10,19 +10,21 @@
     </div>
 
     <div>
-        <h1 class="display-inline">{{arrUsuario?.peliculasPuntuadas}}</h1>
-        <p class="display-inline">pelis vistas</p>
+        <h1 class="pb-0">{{arrUsuario?.peliculasPuntuadas}}</h1>
+        <p>películas vistas</p>
     </div>
 
     <div>
-        <h1>{{arrUsuario?.peliculasPendientes}}</h1>
-        <p>pelis pendientes</p>
-    </div>
-
-    <div>
-        <h1>{{arrUsuario?.puntuacionMedia}}</h1>
+        <h1 class="pb-0">{{ arrUsuario?.puntuacionMedia || '-' }}</h1>
         <p>valoración media</p>
     </div>
+
+    <div>
+        <h1 class="pb-0">{{arrUsuario?.peliculasPendientes}}</h1>
+        <p>películas pendientes</p>
+    </div>
+
+
 
 
 </aside>

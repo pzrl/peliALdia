@@ -1,70 +1,93 @@
 <div class="todo p-4">
-    <h3>Resultados:</h3>
+    <h4>Búsquedas:</h4>
+
+    <div class="botonera">
+        <button id="btnPeliculas" (click)="onClick(1)">Películas <span>({{arrBusqueda[0]?.length}})</span></button>
+        <button type="submit" class="inactivo" id="btnUsuarios" (click)="onClick(2)">Usuarios
+            <span>({{arrBusqueda[1]?.length}})</span></button>
+        <button type="submit" class="inactivo" id="btnCines" (click)="onClick(3)">Cines
+            <span>({{arrBusqueda[2]?.length}})</span></button>
+    </div>
 
     <!-- PELICULA -->
-    <h5>Pelis</h5>
-    <div class="card my-3" style="max-width: 100%;" *ngFor="let pelicula of arrBusqueda[0]">
-        <div class="row no-gutters p-3" max-height="200px">
 
-            <div class="col-2">
-                <a [routerLink]="['/pelicula/', pelicula.id]">
-                    <img src="{{ pelicula.imagen }}" class="pelicula img-fluid">
-                </a>
-            </div>
+    <div *ngIf="peliculas">
+        <p *ngIf="peliculasNoEncontradas" class="pt-4">No se han encontrado películas con el título buscado.</p>
+        <div class="card my-3" style="max-width: 100%;" *ngFor="let pelicula of peliculasMostradas">
+            <div class="row no-gutters p-3" max-height="200px">
 
-            <div class="col-10">
-                <div class="card-body">
-                    <h5 class="card-title"><a [routerLink]="['/pelicula/', pelicula.id]"> {{ pelicula.titulo }} </a>
-                    </h5>
-                    <p class="card-text">Año: {{ pelicula.anio }}</p>
-                    <p class="card-text">Director: {{ pelicula.director }}</p>
-                    <p class="card-text">Reparto: {{ pelicula.reparto }}</p>
+                <div class="foto">
+                    <a [routerLink]="['/in/pelicula/', pelicula?.id]">
+                        <img src="http://localhost:3000/images/{{ pelicula?.id }}.jpg" class="pelicula img-fluid">
+                    </a>
+                </div>
+
+                <div class="info">
+                    <div class="pl-4">
+                        <h4 class="card-title"><a [routerLink]="['/in/pelicula/', pelicula?.id]"> {{ pelicula?.titulo }}
+                            </a>
+                        </h4>
+                        <p class="info2 mb-2">Año: {{ pelicula?.anio }}</p>
+                        <p class="info2 mb-2">Director: {{ pelicula?.director }}</p>
+                        <p class="info2 mb-2">Reparto: {{ pelicula?.reparto }}</p>
+                    </div>
                 </div>
             </div>
         </div>
+        <button class="cargarMas" (click)="cargarMas('peliculas')" *ngIf="peliculasIncompleto">...</button>
     </div>
 
 
     <!-- USUARIO -->
-    <h5>Usuarios</h5>
-    <div class="card my-3" style="max-width: 100%;" *ngFor="let usuario of arrBusqueda[1]">
-        <div class="row no-gutters p-3" max-height="200px">
 
-            <div class="col-2">
-                <a [routerLink]="['/usuario/', usuario.id]">
-                    <img [src]="'../../assets/avatares/' + usuario.avatar + '.jpg'"
-                        class="avatar img-fluid rounded-circle">
-                </a>
-            </div>
+    <div *ngIf="usuarios">
+        <p *ngIf="usuariosNoEncontrados" class="pt-4">No se han encontrado usuarios con el nombre buscado.</p>
+        <div class="card my-3" style="max-width: 100%;" *ngFor="let usuario of usuariosMostrados">
+            <div class="row no-gutters p-3" max-height="200px">
 
-            <div class="col-10">
-                <div class="card-body">
-                    <h5 class="card-title"><a [routerLink]="['/usuario/', usuario.id]">{{ usuario.usuario }}</a></h5>
-                    <p class="card-text">{{ usuario.cita }}</p>
+                <div class="foto">
+                    <a [routerLink]="['/in/usuario/', usuario?.id]">
+                        <img [src]="'../../assets/avatares/' + usuario?.avatar + '.jpg'"
+                            class="avatar img-fluid rounded-circle">
+                    </a>
+                </div>
+
+                <div class="info">
+                    <div class="pl-4 pt-4">
+                        <h4 class="card-title"><a
+                                [routerLink]="['/in/usuario/', usuario?.id]">{{ usuario?.usuario }}</a>
+                        </h4>
+                        <p class="cita">{{ usuario?.cita }}</p>
+                    </div>
                 </div>
             </div>
         </div>
+        <button class="cargarMas" (click)="cargarMas('usuarios')" *ngIf="usuariosIncompleto">...</button>
     </div>
 
 
     <!-- CINE -->
-    <h5>Cines</h5>
-    <div class="card my-3" style="max-width: 100%;" *ngFor="let cine of arrBusqueda[2]">
-        <div class="row no-gutters p-3" max-height="200px">
 
-            <div class="col-2">
-                <a [routerLink]="['/cine/', cine.id ]">
-                    <img src="../../assets/icons/cine.svg" class="img-fluid" width="100px">
-                </a>
-            </div>
+    <div *ngIf="cines">
+        <p *ngIf="cinesNoEncontrados" class="pt-4">No se han encontrado cines con el nombre buscado.</p>
+        <div class="card my-3" style="max-width: 100%;" *ngFor="let cine of cinesMostrados">
+            <div class="row no-gutters p-3" max-height="200px">
 
-            <div class="col-10">
-                <div class="card-body">
-                    <h5 class="card-title"><a [routerLink]="['/cine/', cine.id ]">{{ cine.nombre }}</a></h5>
-                    <p class="card-text">{{ cine.direccion }}</p>
+                <div class="foto">
+                    <a [routerLink]="['/in/cine/', cine?.id ]">
+                        <img src="../../assets/icons/cine.svg" class="img-fluid" width="100px">
+                    </a>
+                </div>
+
+                <div class="info">
+                    <div class="pt-4">
+                        <h4 class="card-title"><a [routerLink]="['/in/cine/', cine?.id ]">{{ cine?.nombre }}</a></h4>
+                        <p class="info2">{{ cine?.direccion }}</p>
+                    </div>
                 </div>
             </div>
         </div>
+        <button class="cargarMas" (click)="cargarMas('cines')" *ngIf="cinesIncompleto">...</button>
     </div>
 
 

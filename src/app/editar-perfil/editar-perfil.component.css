@@ -1,0 +1,22 @@
+img {
+    height: 150px;
+}
+option {
+    color: rgb(0, 80, 76);
+}
+input.btn {
+    width: 200px;
+    background-color: white;
+    opacity: 100%;
+    border-radius: 50px;
+    padding: 1px;
+    color: rgb(0, 80, 76);
+}
+input, select, option{
+    width: 200px;
+    height: 30px;
+    color: rgb(0, 80, 76);
+}
+input:hover {
+    color: rgb(0, 80, 76);
+}

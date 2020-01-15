@@ -1,40 +1,65 @@
 <nav>
     <div class="logo">
-        <a class="navbar-brand" href="#">peli<span>AL</span>dia</a>
+        <!-- MOVIL -->
+        <button (click)="onClickMenu()"><img src="../../assets/icons/menu.png"></button>
+        <div class="myDropdown dropdown-contenido" *ngIf="linksOcultos">
+            <ul>
+                <li><a [routerLink]="['perfil/peliculas']">PELÍCULAS</a></li>
+                <li><a [routerLink]="['perfil/amigos']">USUARIOS</a></li>
+                <li><a [routerLink]="['perfil/cines']">CINES</a></li>
+            </ul>
+        </div>
+        <!-- TABLET - ORDENADOR -->
+        <a [routerLink]="'/in/main'">
+            <img src="../../assets/logo/logopelialdia.jpg">
+        </a>
     </div>
     <div class="navegador">
+        <!-- MOVIL -->
+        <a [routerLink]="'/in/main'">
+            <img src="../../assets/logo/logopelialdia.jpg">
+        </a>
+        <!-- TABLET - ORDENADOR -->
         <div class="bloque links">
             <ul class="nav d-inline-block">
-                <li class="nav-item d-inline-block"><a class="nav-link" [routerLink]="['perfil/amigos']">amigos</a>
+                <li class="nav-item d-inline-block"><a class="nav-link"
+                        [routerLink]="['perfil/peliculas']">PELÍCULAS</a>
                 </li>
-                <li class="nav-item d-inline-block"><a class="nav-link" [routerLink]="['perfil/peliculas']">pelis</a>
+                <li class="nav-item d-inline-block"><a class="nav-link" [routerLink]="['perfil/amigos']">USUARIOS</a>
                 </li>
-                <li class="nav-item d-inline-block"><a class="nav-link" [routerLink]="['perfil/cines']">cines</a></li>
-                <button (click)="onClick()">Cargar API</button>
+                <li class="nav-item d-inline-block"><a class="nav-link" [routerLink]="['perfil/cines']">CINES</a>
+                </li>
             </ul>
         </div>
 
-        <div class="dropdown bloque">
-            <button (click)="onClickPerfil()" class="dropbtn"><img src="../../assets/avatares/{{arrUsuario.avatar}}.jpg"
-                    class="rounded-circle" width="25px;"></button>
-            <div class="myDropdown" class="dropdown-contenido" *ngIf="oculto">
-                <ul>
-                    <li><a [routerLink]="['editarPerfil']">Ajustes del perfil</a></li>
-                    <li><a [routerLink]="['login']">Doblar servilleta</a></li>
-
-                </ul>
-
-
-            </div>
-
-        </div>
         <div class="bloque search">
-            <form class="buscador form-inline input-group" #formulario="ngForm">
+            <form class="form-inline input-group" #formulario="ngForm">
                 <input class="buscador form-control" type="search" name="item" ngModel>
                 <div class="input-group-append">
-                    <button class="btn" type="submit" [routerLink]="['/busqueda/', formulario.value.item]"></button>
+                    <button class="btn" type="submit" [routerLink]="['/in/busqueda/', formulario.value.item]"></button>
                 </div>
             </form>
         </div>
     </div>
+
+    <div class="perfil bloque">
+
+        <div class="desplegable">
+            <button (click)="onClickPerfil()" class="dropbtn"><img
+                    src="../../assets/avatares/{{arrUsuario?.avatar}}.jpg" class="rounded-circle d-inline-block"
+                    width="25px;">
+            </button>
+            <p (click)="onClickPerfil()" class="ml-2">{{arrUsuario?.usuario}}</p>
+
+            <div class="myDropdown dropdown-contenido" *ngIf="oculto">
+                <ul>
+                    <li><a [routerLink]="['editarPerfil']">Ajustes del perfil</a></li>
+                    <li><a [routerLink]="['../login']">Cerrar sesión</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+
 </nav>

@@ -17,12 +17,10 @@ export class PerfilComponent implements OnInit {
   }
 
   async ngOnInit() {
-    await this.usuariosService.getMainUser(this.token)
-      .then(res => this.arrUsuario = res)
-      .catch(err => console.log('error en component'));
-
+    this.arrUsuario = await this.usuariosService.getMainUser(this.token)
+    if (this.arrUsuario.puntuacionMedia === 'NaN') {
+      this.arrUsuario.puntuacionMedia = null;
+    }
   }
-
-
 
 }

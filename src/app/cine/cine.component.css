@@ -1,45 +1,130 @@
+
+.principal {
+    padding: 24px;
+}
 .cine {
     border-radius: 5px;
+    width: 100%;
+    background-color: rgb(31, 97, 94);
+    padding: 24px;
+    margin-bottom: 20px;
 }
-.peliculas {
+h1 {
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+select {
+    border: none;
+    background-color: rgb(31, 97, 94);
+    cursor: pointer;
+}
+option {
+    background-color: rgb(31, 97, 94);
+}
+.subtitulo button {
+    background-color: rgb(31, 97, 94);
+}
+.cine:after {
+    content: "";
+    clear: both;
+    height: 0;
+    display: block;
+}
+input {
+    background-color: rgb(31, 97, 94);
+    border: none;  
+    font-size: 20px;
+    border-radius: 2px;
+    margin-right: 20px;
+}
+.inactivo {
+    background-color: rgb(0, 80, 76);
+}
+.pelicula {
+    width: 100%;
+    height: auto;
+    float: left;
     display: flex;
     flex-wrap: wrap;
 }
-.pelicula {
-    width: 50%; 
-    height: 190px
+.peliculas:after {
+    content: "";
+    clear: both;
+    height: 0;
+    display: block;
 }
 .foto {
+    width: 175px;
     border-radius: 5px;
 }
-h4 {
-    color: white;
+.sesiones {
+    flex: 1;
+}
+.sesiones p {
+    font-size: 18px;
+    margin-bottom: 2px;
+}
+.subtitulo {
+    margin-top: -10px;
+}
+.subtitulo p, .subtitulo h4, .subtitulo select, .subtitulo option, .subtitulo button {
+    font-size: 75%;;
+}
+.cartelera, .opiniones {
+    margin-top: 25px;
+}
+.sesion {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    width: 225px;
+    height: 200px;
+}
+.hora {   
+    flex-flow: column wrap;
+    padding: 4px 4px;
+    width: 100px;
+}
+.info {
+    font-family: 'ProximaNova-Thin';
+    line-height : 1.25;
+    letter-spacing: 1px;
 }
 
-button {
-    border: none
+
+@media (max-width: 950px) {
+        
+    h1 {
+        font-size: 230%;
+    }
+
 }
-button:hover {
-    color: white;
-}
-button:focus {
-    outline: none;
-}
-.reseñas {
-    height: auto;
-    border: 1px solid rgb(212, 245, 244);
-    border-radius: 3px;
-}
-textarea {
-    background-color:  rgb(212, 245, 244);
-    color:rgb(0, 80, 76);
-}
-.autor {
-    font-style: italic;
-    font-size: 10px;
-    text-align: right;
-}
-.fecha {
-    font-size: 10px;
-    text-align: right;
+
+@media (max-width: 600px) {
+
+    .card-title, .subtitulo {
+        text-align: center;
+    }
+
+    .foto {
+        margin: 15px auto;
+    }
+
+    .pelicula {
+        text-align: center;
+        display: block;
+    }
+
+    .sesiones {
+        text-align: center;
+    }
+    
+    .sesion {
+        width: 100%;
+        align-content: center;
+        height: auto
+    }
+
+
 }

@@ -2,18 +2,42 @@
 .pelicula {
     max-width: 100%;
 }
+.row {
+    background-color: rgb(31, 97, 94);
+    border-radius: 4px;
+}
 .foto {
     border-radius: 5px;
     width: 200px;
 }
+h1 {
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+.subtitulo {
+    margin-top: -10px;
+}
+.notasSelect p, .notas p, .notas h4, select, option, .notas2 p, .notas2 h4 {
+    font-size: 75%;
+     margin-bottom: 0;
+}
+.notasSelect, .notas, .notas2, .pendientes  {
+    margin-right: 24px;
+}
+.info {
+    font-family: 'ProximaNova-Thin';
+    line-height : 1.25;
+    letter-spacing: 1px;
+}
 select {
-    background-color: rgb(0, 80, 76);
-    border: 1px solid rgb(212, 245, 244);
-    border-radius: 2px;
+    background-color: rgb(31, 97, 94);
+    border: none;
+    cursor: pointer;
 }
 button {
-    background-color: rgb(0, 80, 76);
-    border: none
+    background-color: rgb(31, 97, 94);
+    border: none;
+    font-size: 75%;
 }
 button:hover {
     color: white;
@@ -30,3 +54,38 @@ textarea {
     background-color:  rgb(212, 245, 244);
     color:rgb(0, 80, 76);
 }
+
+
+
+@media (max-width: 950px) {
+        
+    h1 {
+        font-size: 230%;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+
+    .contFoto {
+        text-align: center;
+    }
+
+    .foto {
+        width: 80%;
+        margin: 10px auto;
+    }
+
+    .card-title {
+        text-align: center;
+        margin: 20px auto;
+    }
+
+    .subtitulo {
+        text-align: center;
+    }
+
+
+}
+

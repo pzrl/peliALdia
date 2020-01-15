@@ -1,50 +1,198 @@
 <div class="principal p-4">
 
-    <div class="usuario mb-3">
+    <div *ngIf="!amigoBlock">
 
+        <div class="usuario mb-3">
+            <div class="row no-gutters p-4">
+                <div class="fotoPerfil col-sm-12 col-md-2">
+                    <img src="../../assets/avatares/{{usuario?.avatar}}.jpg" class="img-fluid rounded-circle">
+                </div>
+                <div class="col-sm-12 col-md-10 pl-3">
+                    <div class="card-body pt-0">
+                        <h2 class="card-title">{{ usuario?.usuario }}</h2>
+                        <p class="cita">{{ usuario?.cita }}</p>
 
-        <div class="row no-gutters p-4">
-            <div class="col-md-2">
-                <img src="../../assets/avatares/{{usuario?.avatar}}.jpg" class="img-fluid rounded-circle">
-            </div>
-            <div class="col-md-10 pl-3">
-                <div class="card-body pt-0">
-                    <h2 class="card-title">{{ usuario?.usuario }}</h2>
-                    <p class="font-italic">{{ usuario?.cita }}</p>
+                        <div *ngIf="block" class="d-inline-block puntuaciones">
+                            <div class="d-inline-block mr-3 mr-lg-5 text-center">
+                                <h2 class="">{{ usuario?.peliculasPuntuadas }}</h2>
+                                <p class="info">películas vistas</p>
+                            </div>
+                            <div class="d-inline-block mr-3 mr-lg-5 text-center">
+                                <h2>{{ usuario?.puntuacionMedia }}</h2>
+                                <p class="info">valoración media</p>
+                            </div>
+                            <div class="d-inline-block text-center">
+                                <h2>{{ usuario?.peliculasPendientes }}</h2>
+                                <p class="info">películas pendientes</p>
+                            </div>
 
-                    <div class="clearfix">
-                        <div class="float-left mr-5">
-                            <h2 class="display-inline">{{ usuario?.peliculasPuntuadas }}</h2>
-                            <p class="display-inline">pelis vistas</p>
                         </div>
-                        <div class="float-left mr-5">
-                            <h2>{{ usuario?.peliculasPendientes }}</h2>
-                            <p>pelis pendientes</p>
+                        <div class="d-block p-0">
+                            <div class="d-inline-block mr-4" *ngIf="block">
+                                <p>
+                                    <button *ngIf="follow" (click)="onClickFollow($event.target.value)"
+                                        value="1">SEGUIR</button>
+                                    <button *ngIf="!follow" (click)="onClickFollow($event.target.value)" value="0">DEJAR
+                                        DE
+                                        SEGUIR</button>
+                                </p>
+                            </div>
+                            <div class="d-inline-block">
+                                <p>
+                                    <button *ngIf="block" (click)="onClickBlock($event.target.value)"
+                                        value="1">BLOQUEAR</button>
+                                    <button *ngIf="!block" (click)="onClickBlock($event.target.value)"
+                                        value="0">DESBLOQUEAR</button>
+                                </p>
+                            </div>
                         </div>
-                        <div class="float-left mr-5">
-                            <h2>{{ usuario?.puntuacionMedia }}</h2>
-                            <p>valoración media</p>
-                        </div>
+
                     </div>
-
-                    <div class="pendientes">
-                        <p>
-                            <button *ngIf="follow" (click)="onClickFollow($event.target.value)"
-                                value="1">Seguir</button>
-                            <button *ngIf="!follow" (click)="onClickFollow($event.target.value)" value="0">Dejar de
-                                seguir</button>
-                            <button *ngIf="block" (click)="onClickBlock($event.target.value)"
-                                value="1">Bloquear</button>
-                            <button *ngIf="!block" (click)="onClickBlock($event.target.value)"
-                                value="0">Desbloquear</button>
-                        </p>
-                    </div>
-
                 </div>
             </div>
         </div>
+
+        <div class="botonera" *ngIf="block">
+            <input id="btnMensajes" type="submit" value="Mensajes" (click)="onClickM()">
+            <input class="inactivo" id="btnVistas" type="submit" value="Películas vistas" (click)="onClickV()">
+            <input class="inactivo" id="btnPendientes" type="submit" value="Películas pendientes" (click)="onClickP()">
+            <input class="inactivo" id="btnAmigos" type="submit" value="Amigos" (click)="onClickA()">
+            <input class="inactivo" id="btnCines" type="submit" value="Cines" (click)="onClickC()">
+        </div>
+
+        <div *ngIf="block">
+
+            <div class="mensajes" *ngIf="mensajes">
+                <app-chat></app-chat>
+            </div>
+
+            <div class="vistas" *ngIf="vistas">
+
+                <div class="mt-4" *ngIf="sinVistas">
+                    <p class="info">{{ usuario?.usuario }} no ha valorado ninguna película.</p>
+                </div>
+                <div class="card my-3" *ngFor="let pelicula of pelisVistasMostradas">
+                    <div class="ficha row no-gutters p-3">
+
+                        <div class="col-2 poster">
+                            <a [routerLink]="['/in/pelicula/', pelicula?.fk_pelicula]">
+                                <img src="http://localhost:3000/images/{{ pelicula?.fk_pelicula }}.jpg"
+                                    class="img-fluid">
+                            </a>
+
+                        </div>
+                        <div class="col-10">
+                            <div class="card-body pt-0 pb-4 descripcion">
+                                <h4 class="titulovista"><a [routerLink]="['/in/pelicula/', pelicula?.fk_pelicula]">
+                                        {{ pelicula.titulo }}
+                                    </a>
+                                </h4>
+                                <div class="puntuacion">
+                                    <p class="d-inline-block">{{ pelicula?.puntuacion }}</p>
+                                    <p class="d-inline-block ml-2">VALORACIÓN</p>
+                                </div>
+                                <p class="info mb-2">Año: {{ pelicula?.anio }}</p>
+                                <p class="info mb-2">Director: {{ pelicula?.director }}</p>
+                                <p class="info mb-3">Reparto: {{ pelicula?.reparto }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <button class="cargarMas" (click)="cargarMas('vistas')" *ngIf="pelisVistasIncompleto">...</button>
+            </div>
+
+            <div class="pendientes" *ngIf="pendientes">
+
+                <div class="mt-4" *ngIf="sinPendientes">
+                    <p class="info">{{ usuario?.usuario }} no ha agragado ninguna peli a su listado de películas
+                        pendientes.</p>
+                </div>
+
+                <div [id]="pelicula?.fk_pelicula" class="card my-3" style="max-width: 100%;"
+                    *ngFor="let pelicula of pelisPendientesMostradas">
+                    <div class="ficha row no-gutters p-3">
+
+                        <div class="col-2">
+                            <a [routerLink]="['/in/pelicula/', pelicula?.fk_pelicula]">
+                                <img src="http://localhost:3000/images/{{ pelicula?.fk_pelicula }}.jpg"
+                                    class="img-fluid">
+                            </a>
+                        </div>
+                        <div class="col-10">
+                            <div class="card-body descripcion">
+                                <h4 class="card-title"><a [routerLink]="['/in/pelicula/', pelicula.fk_pelicula]">
+                                        {{ pelicula.titulo }}
+                                    </a>
+                                </h4>
+                                <p class="info mb-2">Año: {{ pelicula.anio }}</p>
+                                <p class="info mb-2">Director: {{ pelicula.director }}</p>
+                                <p class="info mb-2">Reparto: {{ pelicula.reparto }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="cargarMas" (click)="cargarMas('pendientes')"
+                    *ngIf="pelisPendientesIncompleto">...</button>
+            </div>
+
+            <div class="amigos" *ngIf="amigos">
+                <div class="mt-4" *ngIf="sinAmigos">
+                    <p class="info">{{ usuario?.usuario }} no sigue a ningún usuario.</p>
+                </div>
+                <div [id]="amigo.id" class="card my-3" style="max-width: 100%;" *ngFor="let amigo of arrAmigos">
+                    <div class="row no-gutters p-3" max-height="200px">
+
+                        <div class="col-2">
+                            <a [routerLink]="['/in/usuario/', amigo.id]">
+                                <img [src]="'../../assets/avatares/' + amigo.avatar + '.jpg'"
+                                    class="avatarAmigos img-fluid rounded-circle">
+                            </a>
+                        </div>
+
+                        <div class="col-10">
+                            <div class="card-body">
+                                <h4 class="card-title"><a
+                                        [routerLink]="['/in/usuario/', amigo.id]">{{ amigo.usuario }}</a>
+                                </h4>
+                                <p class="cita">{{ amigo.cita }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="cines" *ngIf="cines">
+                <div class="mt-4" *ngIf="sinCines">
+                    <p class="info"> {{ usuario?.usuario }} no ha agregado sus cines favoritos.
+                    </p>
+                </div>
+                <div [id]="cine?.id" class="card my-3" style="max-width: 100%;" *ngFor="let cine of arrCines">
+                    <div class="row no-gutters p-3" max-height="200px">
+
+                        <div class="col-10">
+                            <div class="card-body">
+                                <h4 class="nombre"><a [routerLink]="['/in/cine/', cine.id ]">{{ cine?.nombre }}</a>
+                                </h4>
+                                <div class="valoracion">
+                                    <p class="d-inline-block">{{ cine?.puntuacion || '-' }}</p>
+                                    <p class="d-inline-block ml-2">VALORACIÓN</p>
+                                </div>
+                                <p class="info mb-0">{{ cine?.direccion }} - {{ cine?.ciudad }}</p>
+                                <a class="info" [href]="cine?.web">{{ cine?.web }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
     </div>
 
-    <app-chat></app-chat>
-
+    <div class="mensajeBlock" *ngIf="amigoBlock">
+        <p class="info pt-4">Este usuario te ha bloqueado.</p>
+    </div>
 </div>

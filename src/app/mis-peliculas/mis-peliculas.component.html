@@ -1,58 +1,88 @@
 <div class="peliculas">
-    <select name="" id="" (change)="onChange($event.target.value)">
-        <option value=""></option>
-        <option value="pendientes">Pendientes</option>
-        <option value="vistas">Vistas</option>
-    </select>
+    <div class="botonera">
+        <input id="btnVistas" type="submit" value="Películas vistas" (click)="onClickV()">
+        <input class="inactivo" id="btnPendientes" type="submit" value="Películas pendientes" (click)="onClickP()">
+    </div>
 
-    <div class="pendientes">
-        <h5>Pelis pendientes</h5>
+    <div class="pendientes mt-5" *ngIf="pendientes">
 
-        <div class="card my-3" style="max-width: 100%;" *ngFor="let pelicula of arrPeliculasPendientes">
+        <div *ngIf="sinPendientes">
+            <p>En esta lista te aparecen las películas que quieres ver. Cuando encuentres una que te interesa pero no
+                has visto, márcala como pendiente.</p>
+        </div>
+
+        <div [id]="pelicula.fk_pelicula" class="card mb-4" style=" max-width: 100%;"
+            *ngFor="let pelicula of pelisPendientesMostradas">
             <div class=" row no-gutters p-3" max-height="200px">
 
                 <div class="col-2">
-                    <a [routerLink]="['/pelicula/', pelicula.id]">
-                        <img src="{{ pelicula.imagen }}" class="img-fluid" width="100px">
+                    <a [routerLink]="['/in/pelicula/', pelicula.fk_pelicula]">
+                        <img src="http://localhost:3000/images/{{ pelicula?.fk_pelicula }}.jpg"
+                            class="pelicula img-fluid" width="150px">
                     </a>
                 </div>
                 <div class="col-10">
-                    <div class="card-body">
-                        <h5 class="card-title"><a [routerLink]="['/pelicula/', pelicula.id]"> {{ pelicula.titulo }}
+                    <div class="card-body pt-0">
+                        <h4 class="quitarpend"><a [routerLink]="['/in/pelicula/', pelicula.fk_pelicula]">
+                                {{ pelicula.titulo }}
                             </a>
-                        </h5>
-                        <p class="card-text">Año: {{ pelicula.anio }}</p>
-                        <p class="card-text">Director: {{ pelicula.director }}</p>
-                        <p class="card-text">Reparto: {{ pelicula.reparto }}</p>
+                        </h4>
+                        <button class="mb-4 quitarpend" [value]="pelicula.fk_pelicula"
+                            (click)="onClick($event.target.value)">QUITAR DE PELÍCULAS
+                            PENDIENTES </button>
+                        <p class="info mb-2">Año: {{ pelicula.anio }}</p>
+                        <p class="info mb-2">Director: {{ pelicula.director }}</p>
+                        <p class="info mb-2">Reparto: {{ pelicula.reparto }}</p>
+
                     </div>
                 </div>
             </div>
         </div>
+        <button class="cargarMas" (click)="cargarMas('pendientes')" *ngIf="pelisPendientesIncompleto">...</button>
     </div>
 
-    <div class="vistas">
-        <h5>Pelis vistas</h5>
+    <div class="vistas mt-5" *ngIf="vistas">
 
-        <div class="card my-3" style="max-width: 100%;" *ngFor="let pelicula of arrPeliculasVistas">
+        <div *ngIf="sinVistas">
+            <p>En esta lista te aparecen las películas que has valorado. Cuando veas una, no te olvides de valorarla.
+            </p>
+        </div>
+
+        <div class="card mb-4" style="max-width: 100%;" *ngFor="let pelicula of pelisVistasMostradas">
             <div class="row no-gutters p-3" max-height="200px">
 
                 <div class="col-2">
-                    <a [routerLink]="['/pelicula/', pelicula?.id]">
-                        <img src="{{ pelicula?.imagen }}" class="img-fluid" width="100px">
+                    <a [routerLink]="['/in/pelicula/', pelicula?.fk_pelicula]">
+                        <img src="http://localhost:3000/images/{{ pelicula?.fk_pelicula }}.jpg"
+                            class="pelicula img-fluid" width="150px">
                     </a>
                 </div>
                 <div class="col-10">
-                    <div class="card-body">
-                        <h5 class="card-title"><a [routerLink]="['/pelicula/', pelicula?.id]"> {{ pelicula.titulo }}
+                    <div class="card-body pt-0">
+                        <h4 class="quitarpend"><a [routerLink]="['/in/pelicula/', pelicula?.fk_pelicula]">
+                                {{ pelicula.titulo }}
                             </a>
-                        </h5>
-                        <p class="card-text">Año: {{ pelicula?.anio }}</p>
-                        <p class="card-text">Director: {{ pelicula?.director }}</p>
-                        <p class="card-text">Reparto: {{ pelicula?.reparto }}</p>
+                        </h4>
+                        <div class="d-inline-block notas">
+                            <select class="d-inline-block"
+                                (change)="onChange($event.target.value, pelicula?.fk_pelicula)">
+                                <option value="NULL" active></option>
+                                <option value="1" [selected]="pelicula?.puntuacion === 1">1</option>
+                                <option value="2" [selected]="pelicula?.puntuacion === 2">2</option>
+                                <option value="3" [selected]="pelicula?.puntuacion === 3">3</option>
+                                <option value="4" [selected]="pelicula?.puntuacion === 4">4</option>
+                                <option value="5" [selected]="pelicula?.puntuacion === 5">5</option>
+                            </select>
+                            <p class="d-inline-block">MI VALORACIÓN</p>
+                        </div>
+                        <p class="info mb-2">Año: {{ pelicula?.anio }}</p>
+                        <p class="info mb-2">Director: {{ pelicula?.director }}</p>
+                        <p class="info mb-2">Reparto: {{ pelicula?.reparto }}</p>
                     </div>
                 </div>
             </div>
         </div>
+        <button class="cargarMas" (click)="cargarMas('vistas')" *ngIf="pelisVistasIncompleto">...</button>
     </div>
 
 </div>
